@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'LithoUXComponents_Example' do
+  pod 'LithoUXComponents', :path => '../'
+
+  target 'LithoUXComponents_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
