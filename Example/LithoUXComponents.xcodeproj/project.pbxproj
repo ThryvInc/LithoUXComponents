@@ -42,10 +42,10 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		67496AC029E783F62C6840AB /* Pods_LithoUXComponents_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LithoUXComponents_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		896984F7A2735FCB7172DCA1 /* Pods-LithoUXComponents_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LithoUXComponents_Tests.release.xcconfig"; path = "Target Support Files/Pods-LithoUXComponents_Tests/Pods-LithoUXComponents_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		953294DAE51877C7304E6942 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		9797DEED3FEDC3F9E0833761 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		953294DAE51877C7304E6942 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		9797DEED3FEDC3F9E0833761 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		989F42590C0FD53E36F74FAA /* Pods-LithoUXComponents_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LithoUXComponents_Tests.debug.xcconfig"; path = "Target Support Files/Pods-LithoUXComponents_Tests/Pods-LithoUXComponents_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		E31F8A177F9C2D36A08C7F4F /* LithoUXComponents.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = LithoUXComponents.podspec; path = ../LithoUXComponents.podspec; sourceTree = "<group>"; };
+		E31F8A177F9C2D36A08C7F4F /* LithoUXComponents.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LithoUXComponents.podspec; path = ../LithoUXComponents.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FDC89D231AAD353E02C9F5B4 /* Pods-LithoUXComponents_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LithoUXComponents_Example.release.xcconfig"; path = "Target Support Files/Pods-LithoUXComponents_Example/Pods-LithoUXComponents_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,7 +147,6 @@
 				989F42590C0FD53E36F74FAA /* Pods-LithoUXComponents_Tests.debug.xcconfig */,
 				896984F7A2735FCB7172DCA1 /* Pods-LithoUXComponents_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -291,11 +291,29 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LithoUXComponents_Example/Pods-LithoUXComponents_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FunNet/FunNet.framework",
+				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatter/ISO8601DateFormatter.framework",
 				"${BUILT_PRODUCTS_DIR}/LithoUXComponents/LithoUXComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/MultiModelTableViewDataSource/MultiModelTableViewDataSource.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
+				"${BUILT_PRODUCTS_DIR}/PlaygroundVCHelpers/PlaygroundVCHelpers.framework",
+				"${BUILT_PRODUCTS_DIR}/Prelude/Prelude.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SSPullToRefresh/SSPullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/THUXAuth/THUXAuth.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FunNet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LithoUXComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MultiModelTableViewDataSource.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PlaygroundVCHelpers.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prelude.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSPullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/THUXAuth.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -419,7 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -465,7 +483,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -479,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LithoUXComponents/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -494,6 +513,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LithoUXComponents/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";

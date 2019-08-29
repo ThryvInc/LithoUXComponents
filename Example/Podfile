@@ -2,10 +2,12 @@ use_frameworks!
 
 target 'LithoUXComponents_Example' do
   pod 'LithoUXComponents', :path => '../'
+  pod 'PlaygroundVCHelpers', git: 'https://github.com/ThryvInc/playground-vc-helpers'
+  pod 'THUXAuth', git: 'https://github.com/ThryvInc/thux-auth'
+  pod 'FunNet', git: 'https://github.com/schrockblock/funnet'
 
   target 'LithoUXComponents_Tests' do
     inherit! :search_paths
-
-    
   end
 end
+

@@ -1,0 +1,82 @@
+PODS:
+  - FunNet (0.0.1):
+    - OHHTTPStubs/Swift
+    - Prelude (~> 3.0)
+  - ISO8601DateFormatter (0.8)
+  - LithoUXComponents (0.1.0):
+    - ISO8601DateFormatter
+    - MultiModelTableViewDataSource
+    - Prelude (~> 3.0)
+    - ReactiveSwift
+    - SSPullToRefresh
+  - MultiModelTableViewDataSource (0.0.3)
+  - OHHTTPStubs/Core (8.0.0)
+  - OHHTTPStubs/Default (8.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (8.0.0)
+  - OHHTTPStubs/Swift (8.0.0):
+    - OHHTTPStubs/Default
+  - PlaygroundVCHelpers (0.0.1)
+  - Prelude (3.0.0)
+  - ReactiveSwift (6.0.0)
+  - SSPullToRefresh (1.3.0)
+  - THUXAuth (0.1.0)
+
+DEPENDENCIES:
+  - FunNet (from `https://github.com/schrockblock/funnet`)
+  - LithoUXComponents (from `../`)
+  - PlaygroundVCHelpers (from `https://github.com/ThryvInc/playground-vc-helpers`)
+  - THUXAuth (from `https://github.com/ThryvInc/thux-auth`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ISO8601DateFormatter
+    - MultiModelTableViewDataSource
+    - OHHTTPStubs
+    - Prelude
+    - ReactiveSwift
+    - SSPullToRefresh
+
+EXTERNAL SOURCES:
+  FunNet:
+    :git: https://github.com/schrockblock/funnet
+  LithoUXComponents:
+    :path: "../"
+  PlaygroundVCHelpers:
+    :git: https://github.com/ThryvInc/playground-vc-helpers
+  THUXAuth:
+    :git: https://github.com/ThryvInc/thux-auth
+
+CHECKOUT OPTIONS:
+  FunNet:
+    :commit: 2ce5b7bcd386b037b6599cfd93c316eb4cc1ea16
+    :git: https://github.com/schrockblock/funnet
+  PlaygroundVCHelpers:
+    :commit: a456365489666c3717ff930b9c4d1c5acb9326a1
+    :git: https://github.com/ThryvInc/playground-vc-helpers
+  THUXAuth:
+    :commit: 70e6a440928edbb885ff8b20cf8a4442cd2ab7fa
+    :git: https://github.com/ThryvInc/thux-auth
+
+SPEC CHECKSUMS:
+  FunNet: 76c1230b228e2ca3cc2a221c201dd9816294de6a
+  ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
+  LithoUXComponents: ba3370a8d30750090610673424bdac0f5783a3b7
+  MultiModelTableViewDataSource: cab335fcc0ea4ee6513429908d65677545c5e407
+  OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
+  PlaygroundVCHelpers: b368165b6bff8bfb8111ea704038878377f3b835
+  Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
+  ReactiveSwift: 24b7ed245617bbfd30ee0c87779b6c64ac1b4518
+  SSPullToRefresh: 3a47e116692b60e7da5a8c60418488133bcc9550
+  THUXAuth: 3d5cfdca13a9c7d1093bb8a5663d96c6a9ce3179
+
+PODFILE CHECKSUM: c44570396417b747f897d8514415236a86d9e46a
+
+COCOAPODS: 1.7.2
