@@ -37,5 +37,7 @@ There's a bunch of really cool stuff in this pod, all targeted at letting you bu
   s.dependency 'ISO8601DateFormatter'
   #s.dependency 'SBTextInputView'
   s.dependency 'MultiModelTableViewDataSource'
+  s.dependency 'FunNet'
+  s.dependency 'THUXAuth'
   s.dependency 'Prelude', '~> 3.0'
 end
