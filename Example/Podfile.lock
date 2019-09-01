@@ -3,12 +3,14 @@ PODS:
     - OHHTTPStubs/Swift
     - Prelude (~> 3.0)
   - ISO8601DateFormatter (0.8)
-  - LithoUXComponents (0.1.0):
+  - LithoUXComponents (0.0.1):
+    - FunNet
     - ISO8601DateFormatter
     - MultiModelTableViewDataSource
     - Prelude (~> 3.0)
     - ReactiveSwift
     - SSPullToRefresh
+    - THUXAuth
   - MultiModelTableViewDataSource (0.0.3)
   - OHHTTPStubs/Core (8.0.0)
   - OHHTTPStubs/Default (8.0.0):
@@ -56,10 +58,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FunNet:
-    :commit: 2ce5b7bcd386b037b6599cfd93c316eb4cc1ea16
+    :commit: 67413225bb6b14b73836798d56167a4619a73af8
     :git: https://github.com/schrockblock/funnet
   PlaygroundVCHelpers:
-    :commit: a456365489666c3717ff930b9c4d1c5acb9326a1
+    :commit: 426a3ad58d8bd70066b2d06a78fba3de9fcf0740
     :git: https://github.com/ThryvInc/playground-vc-helpers
   THUXAuth:
     :commit: 70e6a440928edbb885ff8b20cf8a4442cd2ab7fa
@@ -68,7 +70,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   FunNet: 76c1230b228e2ca3cc2a221c201dd9816294de6a
   ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
-  LithoUXComponents: ba3370a8d30750090610673424bdac0f5783a3b7
+  LithoUXComponents: f8918f3a358445704df2a1b233676f7e6faf2874
   MultiModelTableViewDataSource: cab335fcc0ea4ee6513429908d65677545c5e407
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PlaygroundVCHelpers: b368165b6bff8bfb8111ea704038878377f3b835

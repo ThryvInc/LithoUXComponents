@@ -26,9 +26,10 @@ There's a bunch of really cool stuff in this pod, all targeted at letting you bu
 
   s.source_files = 'LithoUXComponents/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'LithoUXComponents' => ['LithoUXComponents/Assets/*.png']
-  # }
+  s.resources = 'LithoUXComponents/**/*.xib'
+  s.resource_bundles = {
+    'LithoUXComponents' => ['LithoUXComponents/**/*.xib']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

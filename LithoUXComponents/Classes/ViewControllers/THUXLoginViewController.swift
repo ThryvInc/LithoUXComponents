@@ -9,11 +9,12 @@ import UIKit
 
 open class THUXLoginViewController: UIViewController {
     @IBOutlet open weak var logoImageView: UIImageView?
+    @IBOutlet open weak var logoHeight: NSLayoutConstraint!
     @IBOutlet open weak var usernameTextField: UITextField?
     @IBOutlet open weak var passwordTextField: UITextField?
     @IBOutlet open weak var loginButton: UIButton?
+    @IBOutlet open weak var loginHeight: NSLayoutConstraint!
     @IBOutlet open weak var signUpButton: UIButton?
-    @IBOutlet open weak var orLabel: UILabel?
     @IBOutlet open weak var spinner: UIActivityIndicatorView?
     
     open var loginViewModel: THUXLoginProtocol?
@@ -42,7 +43,5 @@ open class THUXLoginViewController: UIViewController {
         loginViewModel?.inputs.submitButtonPressed()
     }
     
-    @IBAction open func signUpPressed() {
-        
-    }
+    @IBAction open func signUpPressed() {}
 }
