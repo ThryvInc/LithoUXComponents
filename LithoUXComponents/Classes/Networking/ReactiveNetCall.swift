@@ -17,7 +17,7 @@ public class ReactiveNetCall: Fireable {
     
     public var firingFunc: (ReactiveNetCall) -> Void = fire(_:)
     
-    public init(configuration: ServerConfigurationProtocol, _ endpoint: EndpointProtocol, responder: ReactiveNetworkResponder? = nil){
+    public init(configuration: ServerConfigurationProtocol, _ endpoint: EndpointProtocol, responder: ReactiveNetworkResponder? = ReactiveNetworkResponder()){
         self.configuration = configuration
         self.endpoint = endpoint
         self.responder = responder
