@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LithoUXComponents'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'LithoUXComponents contains everything you need to create a simple app.'
 
   s.description      = <<-DESC
@@ -24,7 +24,7 @@ There's a bunch of really cool stuff in this pod, all targeted at letting you bu
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'LithoUXComponents/Classes/**/*'
+  s.source_files = 'LithoUXComponents/Classes/**/*.swift'
   
   s.resources = 'LithoUXComponents/**/*.xib'
   # s.resource_bundles = {
