@@ -24,7 +24,7 @@ There's a bunch of really cool stuff in this pod, all targeted at letting you bu
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'LithoUXComponents/Classes/**/*'
+  s.source_files = 'LithoUXComponents/Classes/**/*.swift'
   
   s.resources = 'LithoUXComponents/**/*.xib'
   # s.resource_bundles = {
