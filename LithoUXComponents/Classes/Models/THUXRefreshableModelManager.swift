@@ -32,7 +32,14 @@ open class THUXRefreshableNetworkCallManager: Refreshable {
 }
 
 open class THUXPageableModelManager: THUXRefreshableNetworkCallManager, Pageable {
-    public let pageProperty = MutableProperty<Int>(0)
+    public let pageProperty: MutableProperty<Int>
+    private let firstPageValue: Int
+    
+    public init(_ call: ReactiveNetCall, firstPageValue: Int = 0) {
+        self.firstPageValue = firstPageValue
+        self.pageProperty = MutableProperty(firstPageValue)
+        super.init(call)
+    }
     
     open func viewDidLoad() {
         pageProperty.signal.observeValues { page in
@@ -44,7 +51,7 @@ open class THUXPageableModelManager: THUXRefreshableNetworkCallManager, Pageable
     }
     
     open override func refresh() {
-        pageProperty.value = 0
+        pageProperty.value = firstPageValue
     }
     
     open func nextPage() {
@@ -54,5 +61,4 @@ open class THUXPageableModelManager: THUXRefreshableNetworkCallManager, Pageable
     open func fetchPage(_ page: Int) {
         pageProperty.value = page
     }
-    
 }

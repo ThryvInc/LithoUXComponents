@@ -32,8 +32,8 @@ open class THUXLoginViewModel: THUXLoginProtocol, THUXLoginInputs, THUXLoginOutp
     open var inputs: THUXLoginInputs { return self }
     open var outputs: THUXLoginOutputs { return self }
     
-    let usernameChangedProperty = MutableProperty<String?>(nil)
-    let passwordChangedProperty = MutableProperty<String?>(nil)
+    let usernameChangedProperty = MutableProperty<String>("")
+    let passwordChangedProperty = MutableProperty<String>("")
     let submitButtonPressedProperty = MutableProperty(())
     let viewDidLoadProperty = MutableProperty(())
     
@@ -45,12 +45,12 @@ open class THUXLoginViewModel: THUXLoginProtocol, THUXLoginInputs, THUXLoginOutp
     public let advanceAuthed: Signal<(), Never>
     let advanceAuthedProperty = MutableProperty(())
     
-    public let successfulCredEntry: Signal<(String?, String?), Never>
-    public let submittedFormDataInvalid: Signal<(String?, String?), Never>
+    public let successfulCredEntry: Signal<(String, String), Never>
+    public let submittedFormDataInvalid: Signal<(String, String), Never>
     
     public let credentialLoginCall: ReactiveNetCall?
 
-    public init<T>(credsCall: ReactiveNetCall? = nil, loginModelToJson: @escaping (String?, String?) -> T) where T: Encodable {
+    public init<T>(credsCall: ReactiveNetCall? = nil, loginModelToJson: @escaping (String, String) -> T) where T: Encodable {
         credentialLoginCall = credsCall
         
         advanceAuthed = advanceAuthedProperty.signal
@@ -87,11 +87,11 @@ open class THUXLoginViewModel: THUXLoginProtocol, THUXLoginInputs, THUXLoginOutp
     }
     
     open func usernameChanged(username: String?) {
-        self.usernameChangedProperty.value = username
+        self.usernameChangedProperty.value = username ?? ""
     }
     
     open func passwordChanged(password: String?) {
-        self.passwordChangedProperty.value = password
+        self.passwordChangedProperty.value = password ?? ""
     }
     
     open func submitButtonPressed() {
@@ -109,11 +109,11 @@ open class THUXLoginViewModel: THUXLoginProtocol, THUXLoginInputs, THUXLoginOutp
         self.activityIndicatorVisibleProperty.value = false
     }
     
-    public static func isValidCreds(username: String?, password: String?) -> Bool {
+    public static func isValidCreds(username: String, password: String) -> Bool {
         return true
     }
     
-    public static func isInvalidCreds(username: String?, password: String?) -> Bool {
+    public static func isInvalidCreds(username: String, password: String) -> Bool {
         return false
     }
     

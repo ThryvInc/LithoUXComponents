@@ -34,16 +34,16 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                     <connections>
-                        <action selector="usernameChanged" destination="-1" eventType="editingDidEnd" id="Wla-eE-Cbh"/>
+                        <action selector="usernameChanged" destination="-1" eventType="editingChanged" id="eCK-A3-jGC"/>
                     </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R7Q-he-D1X">
                     <rect key="frame" x="16" y="233" width="343" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" textContentType="password"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                     <connections>
-                        <action selector="passwordChanged" destination="-1" eventType="editingDidEnd" id="D8R-CE-NJd"/>
+                        <action selector="passwordChanged" destination="-1" eventType="editingChanged" id="z3z-1l-wTc"/>
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAM-Sd-P0o">
@@ -100,7 +100,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mzo-Zd-pbM" secondAttribute="trailing" constant="16" id="vaD-wX-gDo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-328.80000000000001" y="-5.8470764617691158"/>
+            <point key="canvasLocation" x="-926" y="-11"/>
         </view>
     </objects>
 </document>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class THUXJsonProvider {
+public class THUXJsonProvider {
     public static var jsonEncoder = defaultJsonEncoder()
     public static var jsonDecoder = defaultJsonDecoder()
     

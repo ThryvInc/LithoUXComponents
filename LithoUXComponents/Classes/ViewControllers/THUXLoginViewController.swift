@@ -31,17 +31,17 @@ open class THUXLoginViewController: UIViewController {
         loginViewModel?.inputs.viewDidLoad()
     }
     
-    @IBAction open func usernameChanged() {
+    @IBAction @objc open func usernameChanged() {
         loginViewModel?.inputs.usernameChanged(username: usernameTextField!.text)
     }
     
-    @IBAction open func passwordChanged() {
+    @IBAction @objc open func passwordChanged() {
         loginViewModel?.inputs.passwordChanged(password: passwordTextField!.text)
     }
     
-    @IBAction open func loginButtonPressed() {
+    @IBAction @objc open func loginButtonPressed() {
         loginViewModel?.inputs.submitButtonPressed()
     }
     
-    @IBAction open func signUpPressed() {}
+    @IBAction @objc open func signUpPressed() {}
 }

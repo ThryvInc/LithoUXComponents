@@ -18,5 +18,6 @@ open class THUXPageableTableViewController: THUXRefreshableTableViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = pageableTableViewDelegate
+        pageableModelManager?.viewDidLoad()
     }
 }
