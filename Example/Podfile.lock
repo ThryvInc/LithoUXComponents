@@ -3,7 +3,7 @@ PODS:
     - OHHTTPStubs/Swift
     - Prelude (~> 3.0)
   - ISO8601DateFormatter (0.8)
-  - LithoUXComponents (0.0.1):
+  - LithoUXComponents (0.0.2):
     - FunNet
     - ISO8601DateFormatter
     - MultiModelTableViewDataSource
@@ -38,7 +38,7 @@ DEPENDENCIES:
   - THUXAuth (from `https://github.com/ThryvInc/thux-auth`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - ISO8601DateFormatter
     - MultiModelTableViewDataSource
     - OHHTTPStubs
@@ -70,7 +70,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   FunNet: 76c1230b228e2ca3cc2a221c201dd9816294de6a
   ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
-  LithoUXComponents: f8918f3a358445704df2a1b233676f7e6faf2874
+  LithoUXComponents: 0d4da85fdc578ba00b19b52ee71c189e3d85594b
   MultiModelTableViewDataSource: cab335fcc0ea4ee6513429908d65677545c5e407
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PlaygroundVCHelpers: b368165b6bff8bfb8111ea704038878377f3b835
@@ -81,4 +81,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c44570396417b747f897d8514415236a86d9e46a
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.8.1
