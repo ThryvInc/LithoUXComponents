@@ -16,7 +16,7 @@ open class THUXPageableTableViewDelegate: NSObject, UITableViewDelegate {
         self.pageableModelManager = pageableModelManager
     }
 
-    open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    @objc open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if tableView.numberOfRows(inSection: indexPath.section) - indexPath.row == pageSize - pageTrigger {
             pageableModelManager?.nextPage()
         }
@@ -24,16 +24,16 @@ open class THUXPageableTableViewDelegate: NSObject, UITableViewDelegate {
 }
 
 open class THUXTappablePagingDelegate: THUXPageableTableViewDelegate {
-    var onTap: (IndexPath) -> Void = { _ in }
+    public var onTap: (IndexPath) -> Void = { _ in }
     
-    init(_ pageableModelManager: THUXPageableModelManager?, onTap: ((IndexPath) -> Void)? = nil) {
+    public init(_ pageableModelManager: THUXPageableModelManager?, onTap: ((IndexPath) -> Void)? = nil) {
         super.init(pageableModelManager)
         if let onTap = onTap {
             self.onTap = onTap
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    @objc open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         onTap(indexPath)
     }
