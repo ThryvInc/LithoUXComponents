@@ -17,7 +17,7 @@ open class THUXPageableTableViewDelegate: NSObject, UITableViewDelegate {
     }
 
     @objc open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if tableView.numberOfRows(inSection: indexPath.section) - indexPath.row == pageSize - pageTrigger {
+        if tableView.numberOfRows(inSection: indexPath.section) - indexPath.row == pageTrigger {
             pageableModelManager?.nextPage()
         }
     }
