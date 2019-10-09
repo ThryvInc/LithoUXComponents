@@ -8,9 +8,9 @@
 import ReactiveSwift
 
 open class THUXPageCallModelsManager<T>: THUXPageableModelManager where T: Decodable {
-    let modelsSignal: Signal<[T], Never>
+    public let modelsSignal: Signal<[T], Never>
     private let modelsProperty = MutableProperty<[T]>([T]())
-    override init(_ call: ReactiveNetCall, firstPageValue: Int = 1) {
+    public override init(_ call: ReactiveNetCall, firstPageValue: Int = 1) {
         modelsSignal = modelsProperty.signal
         super.init(call, firstPageValue: firstPageValue)
         
@@ -31,9 +31,9 @@ open class THUXPageCallModelsManager<T>: THUXPageableModelManager where T: Decod
 }
 
 open class THUXPageUnwrappedModelsManager<S, T>: THUXPageableModelManager where S: Decodable, T: Decodable {
-    let modelsSignal: Signal<[T], Never>
+    public let modelsSignal: Signal<[T], Never>
     private let modelsProperty = MutableProperty<[T]>([T]())
-    init(_ call: ReactiveNetCall, unwrapper: @escaping (S) -> [T]?, firstPageValue: Int = 1) {
+    public init(_ call: ReactiveNetCall, unwrapper: @escaping (S) -> [T]?, firstPageValue: Int = 1) {
         let onePageOfModelsSignal = call.responder?
             .dataSignal.skipNil()
             .filterMap({ try? THUXJsonProvider.jsonDecoder.decode(S.self, from: $0) })
