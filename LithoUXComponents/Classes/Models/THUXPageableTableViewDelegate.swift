@@ -22,3 +22,19 @@ open class THUXPageableTableViewDelegate: NSObject, UITableViewDelegate {
         }
     }
 }
+
+open class THUXTappablePagingDelegate: THUXPageableTableViewDelegate {
+    var onTap: (IndexPath) -> Void = { _ in }
+    
+    init(_ pageableModelManager: THUXPageableModelManager?, onTap: ((IndexPath) -> Void)? = nil) {
+        super.init(pageableModelManager)
+        if let onTap = onTap {
+            self.onTap = onTap
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        onTap(indexPath)
+    }
+}
