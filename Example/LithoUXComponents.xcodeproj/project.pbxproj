@@ -33,6 +33,7 @@
 		492C9F132319AB71002F3D07 /* Login.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Login.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		492D9E06234D64530025ADA4 /* Pipeline.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Pipeline.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		492D9E07234D69A60025ADA4 /* PagingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingManagerTests.swift; sourceTree = "<group>"; };
+		492D9E0A234D7FC20025ADA4 /* config.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = config.yml; path = ../.circleci/config.yml; sourceTree = "<group>"; };
 		5EDEA18A48F1B7B6BA91A837 /* Pods_LithoUXComponents_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LithoUXComponents_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* LithoUXComponents_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LithoUXComponents_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				492D9E0A234D7FC20025ADA4 /* config.yml */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for LithoUXComponents */,
 				607FACE81AFB9204008FA782 /* Tests */,

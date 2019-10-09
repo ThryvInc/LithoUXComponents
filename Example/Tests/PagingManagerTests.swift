@@ -76,6 +76,29 @@ class PagingManagerTests: XCTestCase {
         
         XCTAssertEqual(callCount, 3)
     }
+
+    func testRefreshAfterNextPage() {
+        var callCount = 0
+        let pageManager = THUXPageCallModelsManager<Human>(call, firstPageValue: 1)
+        pageManager.modelsSignal.observeValues { (humans) in
+            callCount += 1
+            if callCount == 2 {
+                XCTAssertEqual(humans.count, 2)
+                XCTAssertEqual(humans.first?.id, 1)
+                XCTAssertEqual(humans[1].id, 2)
+            }
+            if callCount == 3 {
+                XCTAssertEqual(humans.count, 1)
+                XCTAssertEqual(humans.first?.id, 1)
+            }
+        }
+        pageManager.viewDidLoad()
+        pageManager.refresh()
+        pageManager.nextPage()
+        pageManager.refresh()
+        
+        XCTAssertEqual(callCount, 3)
+    }
 }
 
 class Human: Decodable {
