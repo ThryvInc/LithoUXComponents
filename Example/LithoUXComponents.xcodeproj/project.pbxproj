@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		492D9E08234D69A60025ADA4 /* PagingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D9E07234D69A60025ADA4 /* PagingManagerTests.swift */; };
+		492D9E0D234E6C860025ADA4 /* PagingDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D9E0C234E6C860025ADA4 /* PagingDelegateTests.swift */; };
+		492D9E0F234E76F80025ADA4 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D9E0E234E76F80025ADA4 /* LoginViewModelTests.swift */; };
 		5D1D243783B870D14FE40489 /* Pods_LithoUXComponents_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EDEA18A48F1B7B6BA91A837 /* Pods_LithoUXComponents_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -34,6 +36,9 @@
 		492D9E06234D64530025ADA4 /* Pipeline.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Pipeline.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		492D9E07234D69A60025ADA4 /* PagingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingManagerTests.swift; sourceTree = "<group>"; };
 		492D9E0A234D7FC20025ADA4 /* config.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = config.yml; path = ../.circleci/config.yml; sourceTree = "<group>"; };
+		492D9E0B234E61D70025ADA4 /* Examples.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Examples.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		492D9E0C234E6C860025ADA4 /* PagingDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingDelegateTests.swift; sourceTree = "<group>"; };
+		492D9E0E234E76F80025ADA4 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		5EDEA18A48F1B7B6BA91A837 /* Pods_LithoUXComponents_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LithoUXComponents_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* LithoUXComponents_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LithoUXComponents_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,6 +104,7 @@
 		607FACD21AFB9204008FA782 /* Example for LithoUXComponents */ = {
 			isa = PBXGroup;
 			children = (
+				492D9E0B234E61D70025ADA4 /* Examples.playground */,
 				492D9E06234D64530025ADA4 /* Pipeline.playground */,
 				492C9F132319AB71002F3D07 /* Login.playground */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
@@ -123,7 +129,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				492D9E0E234E76F80025ADA4 /* LoginViewModelTests.swift */,
 				492D9E07234D69A60025ADA4 /* PagingManagerTests.swift */,
+				492D9E0C234E6C860025ADA4 /* PagingDelegateTests.swift */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -367,7 +375,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492D9E0F234E76F80025ADA4 /* LoginViewModelTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				492D9E0D234E6C860025ADA4 /* PagingDelegateTests.swift in Sources */,
 				492D9E08234D69A60025ADA4 /* PagingManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
