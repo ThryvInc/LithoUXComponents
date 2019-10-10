@@ -101,7 +101,7 @@ class PagingManagerTests: XCTestCase {
     }
 }
 
-class Human: Decodable {
+class Human: Codable {
     var id: Int = -1
 }
 
