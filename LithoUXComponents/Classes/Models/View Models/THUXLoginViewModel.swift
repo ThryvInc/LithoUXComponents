@@ -53,7 +53,11 @@ open class THUXLoginViewModel: THUXLoginProtocol, THUXLoginInputs, THUXLoginOutp
     public init<T>(credsCall: ReactiveNetCall? = nil, loginModelToJson: @escaping (String, String) -> T) where T: Encodable {
         credentialLoginCall = credsCall
         
-        advanceAuthed = advanceAuthedProperty.signal
+        if let dataSignal = credsCall?.responder?.dataSignal {
+            advanceAuthed = Signal.combineLatest(advanceAuthedProperty.signal, dataSignal).map({ _ in () })
+        } else {
+            advanceAuthed = advanceAuthedProperty.signal
+        }
         
         activityIndicatorVisible = activityIndicatorVisibleProperty.signal
         
