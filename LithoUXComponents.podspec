@@ -8,14 +8,14 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LithoUXComponents'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'LithoUXComponents contains everything you need to create a simple app.'
 
   s.description      = <<-DESC
 There's a bunch of really cool stuff in this pod, all targeted at letting you build the things that are *different* about your app, not the reproducing the same things over and over. Customizable, extendable, bare bones implementations of common UX components like splash, login, creds creation, commenting, and view/edit profile screens, an app delegate implementation that sets up fabric and crashlytics for you, a simple framework for handling user sessions, a material design based controller for table views... and more coming!
                        DESC
 
-  s.homepage         = 'https://github.com/Elliot/LithoUXComponents'
+  s.homepage         = 'https://github.com/ThryvInc/LithoUXComponents'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Elliot' => '' }
