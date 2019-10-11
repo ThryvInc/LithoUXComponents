@@ -49,12 +49,12 @@ open class THUXLoginViewModel: THUXLoginProtocol, THUXLoginInputs, THUXLoginOutp
     public let submittedFormDataInvalid: Signal<(String, String), Never>
     
     public let credentialLoginCall: ReactiveNetCall?
-
-    public init<T>(credsCall: ReactiveNetCall? = nil, loginModelToJson: @escaping (String, String) -> T) where T: Encodable {
+    
+    public init<T>(credsCall: ReactiveNetCall? = nil, loginModelToJson: @escaping (String, String) -> T, saveAuth: ((Data) -> Bool)? = nil) where T: Encodable {
         credentialLoginCall = credsCall
         
-        if let dataSignal = credsCall?.responder?.dataSignal {
-            advanceAuthed = Signal.combineLatest(advanceAuthedProperty.signal, dataSignal).map({ _ in () })
+        if let authSaved = saveAuth, let responder = credsCall?.responder {
+            advanceAuthed = responder.dataSignal.skipNil().map(authSaved).filter { $0 }.map { _ in () }
         } else {
             advanceAuthed = advanceAuthedProperty.signal
         }
