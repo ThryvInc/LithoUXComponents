@@ -21,3 +21,16 @@ open class THUXPageableTableViewController: THUXRefreshableTableViewController {
         pageableModelManager?.viewDidLoad()
     }
 }
+
+open class THUXPageableMultiTableViewController<T>: THUXRefreshableMultiTableViewController<T> {
+    open var pageableModelManager: THUXPageableModelManager? {
+        didSet {
+            self.refreshableModelManager = pageableModelManager
+        }
+    }
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        pageableModelManager?.viewDidLoad()
+    }
+}

@@ -1,9 +1,11 @@
 PODS:
   - FunNet (0.0.1):
+    - LithoOperators
     - OHHTTPStubs/Swift
-    - Prelude (~> 3.0)
   - ISO8601DateFormatter (0.8)
-  - LithoUXComponents (0.0.1):
+  - LithoOperators (0.0.2):
+    - Prelude
+  - LithoUXComponents (0.0.4):
     - FunNet
     - ISO8601DateFormatter
     - MultiModelTableViewDataSource
@@ -11,7 +13,7 @@ PODS:
     - ReactiveSwift
     - SSPullToRefresh
     - THUXAuth
-  - MultiModelTableViewDataSource (0.0.3)
+  - MultiModelTableViewDataSource (0.0.7)
   - OHHTTPStubs/Core (8.0.0)
   - OHHTTPStubs/Default (8.0.0):
     - OHHTTPStubs/Core
@@ -27,7 +29,7 @@ PODS:
     - OHHTTPStubs/Default
   - PlaygroundVCHelpers (0.0.1)
   - Prelude (3.0.0)
-  - ReactiveSwift (6.0.0)
+  - ReactiveSwift (6.1.0)
   - SSPullToRefresh (1.3.0)
   - THUXAuth (0.1.0)
 
@@ -40,6 +42,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ISO8601DateFormatter
+    - LithoOperators
     - MultiModelTableViewDataSource
     - OHHTTPStubs
     - Prelude
@@ -58,24 +61,25 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FunNet:
-    :commit: 67413225bb6b14b73836798d56167a4619a73af8
+    :commit: d30d7f36abc85bddd4d01037e53d0c978985692d
     :git: https://github.com/schrockblock/funnet
   PlaygroundVCHelpers:
     :commit: 426a3ad58d8bd70066b2d06a78fba3de9fcf0740
     :git: https://github.com/ThryvInc/playground-vc-helpers
   THUXAuth:
-    :commit: 70e6a440928edbb885ff8b20cf8a4442cd2ab7fa
+    :commit: 85218d0b78dba3c2fee80409113c7d11c6f985ba
     :git: https://github.com/ThryvInc/thux-auth
 
 SPEC CHECKSUMS:
-  FunNet: 76c1230b228e2ca3cc2a221c201dd9816294de6a
+  FunNet: 782eb82ce25a8a0499eef8533edbc192817a0b33
   ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
-  LithoUXComponents: f8918f3a358445704df2a1b233676f7e6faf2874
-  MultiModelTableViewDataSource: cab335fcc0ea4ee6513429908d65677545c5e407
+  LithoOperators: 8a4f284d8c10cb02b28af87c18494ba225345419
+  LithoUXComponents: 3b55ea0cfbcd6541d50d2ba590e5ec137504b2b0
+  MultiModelTableViewDataSource: a1567d35c1ea423b21bcc5b5cbd1414e4ddd1058
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PlaygroundVCHelpers: b368165b6bff8bfb8111ea704038878377f3b835
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
-  ReactiveSwift: 24b7ed245617bbfd30ee0c87779b6c64ac1b4518
+  ReactiveSwift: b78c7259f8ca46368238c895ae33a6a3bf9f811c
   SSPullToRefresh: 3a47e116692b60e7da5a8c60418488133bcc9550
   THUXAuth: 3d5cfdca13a9c7d1093bb8a5663d96c6a9ce3179
 
