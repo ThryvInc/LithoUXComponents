@@ -13,7 +13,7 @@ PODS:
     - ReactiveSwift
     - SSPullToRefresh
     - THUXAuth
-  - MultiModelTableViewDataSource (0.0.7)
+  - MultiModelTableViewDataSource (0.0.8)
   - OHHTTPStubs/Core (8.0.0)
   - OHHTTPStubs/Default (8.0.0):
     - OHHTTPStubs/Core
@@ -75,7 +75,7 @@ SPEC CHECKSUMS:
   ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
   LithoOperators: 8a4f284d8c10cb02b28af87c18494ba225345419
   LithoUXComponents: 3b55ea0cfbcd6541d50d2ba590e5ec137504b2b0
-  MultiModelTableViewDataSource: a1567d35c1ea423b21bcc5b5cbd1414e4ddd1058
+  MultiModelTableViewDataSource: 798f682408933a269de09e5c73b54cd5cb86b851
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PlaygroundVCHelpers: b368165b6bff8bfb8111ea704038878377f3b835
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a

@@ -10,7 +10,7 @@ import UIKit
 open class THUXMultiModelTableViewController<T>: UIViewController {
     @IBOutlet public var tableView: UITableView?
     open var tableViewDelegate: THUXTappableTableDelegate?
-    open var viewModel: THUXModelListViewModel<T>?
+    open var viewModel: THUXModelTableViewModel<T>?
 
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +21,10 @@ open class THUXMultiModelTableViewController<T>: UIViewController {
     }
 
     open func configureTableView() {
-        viewModel?.dataSource.tableView = tableView
-        tableView?.dataSource = viewModel?.dataSource
+        if let vm = viewModel as? THUXDataSourceProvider {
+            vm.dataSource.tableView = tableView
+            tableView?.dataSource = vm.dataSource
+        }
         tableView?.delegate = tableViewDelegate
     }
 }

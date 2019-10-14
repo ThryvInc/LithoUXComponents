@@ -25,6 +25,7 @@ open class THUXTappableTableDelegate: NSObject, UITableViewDelegate {
 open class THUXPageableTableViewDelegate: THUXTappableTableDelegate {
     open var pageableModelManager: THUXPageableModelManager?
     open var pageTrigger: Int = 5
+    open var pageSize: Int = 20
     
     public init(_ pageableModelManager: THUXPageableModelManager?, _ onTap: ((IndexPath) -> Void)? = nil) {
         super.init(onTap)
@@ -32,7 +33,8 @@ open class THUXPageableTableViewDelegate: THUXTappableTableDelegate {
     }
 
     @objc open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if tableView.numberOfRows(inSection: indexPath.section) - indexPath.row == pageTrigger {
+        let numberOfRows = tableView.numberOfRows(inSection: indexPath.section)
+        if numberOfRows - indexPath.row == pageTrigger && numberOfRows % pageSize == 0  {
             pageableModelManager?.nextPage()
         }
     }

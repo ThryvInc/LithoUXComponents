@@ -21,7 +21,25 @@ struct Cycle: Codable {
     var reigns = [Reign]()
 }
 let json = """
-{"ordinal": 18, "reigns":[{"house":"phoenix", "emperors": [{"name":"Zerika IV"}]}, {"house":"dragon", "emperors": [{"name":"Norathar II"}]}, {"house":"lyorn"}, {"house":"tiassa"}, {"house":"hawk", "emperors": [{"name":"??Paarfi I of Roundwood (the Wise)??"}]}, {"house":"dzur"}, {"house":"issola"}, {"house":"tsalmoth"}, {"house":"vallista"}, {"house":"jhereg"}, {"house":"iorich"}, {"house":"chreotha"}, {"house":"yendi"}, {"house":"orca"}, {"house":"teckla"}, {"house":"jhegaala"}, {"house":"athyra"}]}
+{ "ordinal": 18,
+  "reigns":[{"house":"phoenix", "emperors": [{"name":"Zerika IV"}]},
+            {"house":"dragon", "emperors": [{"name":"Norathar II"}]},
+            {"house":"lyorn"},
+            {"house":"tiassa"},
+            {"house":"hawk", "emperors": [{"name":"??Paarfi I of Roundwood (the Wise)??"}]},
+            {"house":"dzur"},
+            {"house":"issola"},
+            {"house":"tsalmoth"},
+            {"house":"vallista"},
+            {"house":"jhereg"},
+            {"house":"iorich"},
+            {"house":"chreotha"},
+            {"house":"yendi"},
+            {"house":"orca"},
+            {"house":"teckla"},
+            {"house":"jhegaala"},
+            {"house":"athyra"}]
+}
 """
 
 

@@ -22,7 +22,25 @@ struct Cycle: Codable {
 }
 
 let json = """
-{"ordinal": 18, "reigns":[{"house":"phoenix", "emperors": [{"name":"Zerika IV"}]}, {"house":"dragon", "emperors": [{"name":"Norathar II"}]}, {"house":"lyorn"}, {"house":"tiassa"}, {"house":"hawk", "emperors": [{"name":"??Paarfi I of Roundwood (the Wise)??"}]}, {"house":"dzur"}, {"house":"issola"}, {"house":"tsalmoth"}, {"house":"vallista"}, {"house":"jhereg"}, {"house":"iorich"}, {"house":"chreotha"}, {"house":"yendi"}, {"house":"orca"}, {"house":"teckla"}, {"house":"jhegaala"}, {"house":"athyra"}]}
+{ "ordinal": 18,
+  "reigns":[{"house":"phoenix", "emperors": [{"name":"Zerika IV"}]},
+            {"house":"dragon", "emperors": [{"name":"Norathar II"}]},
+            {"house":"lyorn"},
+            {"house":"tiassa"},
+            {"house":"hawk", "emperors": [{"name":"??Paarfi I of Roundwood (the Wise)??"}]},
+            {"house":"dzur"},
+            {"house":"issola"},
+            {"house":"tsalmoth"},
+            {"house":"vallista"},
+            {"house":"jhereg"},
+            {"house":"iorich"},
+            {"house":"chreotha"},
+            {"house":"yendi"},
+            {"house":"orca"},
+            {"house":"teckla"},
+            {"house":"jhegaala"},
+            {"house":"athyra"}]
+}
 """
 
 //model manipulation
@@ -40,7 +58,7 @@ class DetailTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
 }
-func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void) -> MultiModelTableViewDataSourceItem { return FunctionalMultiModelTableViewDataSourceItem<DetailTableViewCell>(identifier: "cell", configurer) }
+func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void) -> MultiModelTableViewDataSourceItem { return TappableFunctionalMultiModelItem<DetailTableViewCell>(identifier: "cell", configurer, {}) }
 
 //linking models to views
 let buildConfigurator: (Reign) -> (UITableViewCell) -> Void = { reign in
@@ -63,6 +81,7 @@ let modelsSignal: Signal<[Reign], Never> = unwrappedModelSignal(from: dataSignal
 let refreshManager = THUXRefreshCallModelsManager<Reign>(call, modelsSignal)
 
 let vc = THUXRefreshableMultiTableViewController<Reign>(nibName: "THUXMultiModelTableViewController", bundle: Bundle(for: THUXMultiModelTableViewController<Reign>.self))
+vc.tableViewDelegate = THUXTappableTableDelegate()
 vc.refreshableModelManager = refreshManager
 vc.title = "Current Cycle"
 vc.viewModel = THUXModelListViewModel(modelsSignal: refreshManager.modelsSignal, modelToItem: buildConfigurator >>> configuratorToItem)
@@ -71,4 +90,3 @@ let nc = UINavigationController(rootViewController: vc)
 
 PlaygroundPage.current.liveView = nc
 PlaygroundPage.current.needsIndefiniteExecution = true
-
