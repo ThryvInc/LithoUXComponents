@@ -66,6 +66,23 @@ class PagingDelegateTests: XCTestCase {
         
         XCTAssertFalse(wasCalled)
     }
+
+    func testNotNextWhenPageSizeWrong() {
+        var wasCalled = false
+        let pageManager = MockPageManager({
+            wasCalled = true
+        })
+        
+        let delegate = THUXPageableTableViewDelegate(pageManager)
+        
+        let tv = MockTableView()
+        tv.numberOfRows = 42
+        let cell = UITableViewCell()
+        let indexPath = IndexPath.init(row: 37, section: 0)
+        delegate.tableView(tv, willDisplay: cell, forRowAt: indexPath)
+        
+        XCTAssertFalse(wasCalled)
+    }
 }
 
 class MockPageManager: THUXPageableModelManager {

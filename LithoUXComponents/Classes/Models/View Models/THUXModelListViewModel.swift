@@ -10,7 +10,11 @@ import MultiModelTableViewDataSource
 import Prelude
 import ReactiveSwift
 
-open class THUXModelListViewModel<T>: THUXModelTableViewModel<T> {
+public protocol THUXDataSourceProvider {
+    var dataSource: MultiModelTableViewDataSource { get }
+}
+
+open class THUXModelListViewModel<T>: THUXModelTableViewModel<T>, THUXDataSourceProvider {
     public let dataSource = MultiModelTableViewDataSource()
     
     public override init(modelsSignal: Signal<[T], Never>, modelToItem: @escaping (T) -> MultiModelTableViewDataSourceItem) {
