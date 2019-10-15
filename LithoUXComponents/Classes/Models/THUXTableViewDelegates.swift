@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MultiModelTableViewDataSource
 
 open class THUXTappableTableDelegate: NSObject, UITableViewDelegate {
     public var onTap: (IndexPath) -> Void = { _ in }
@@ -13,6 +14,14 @@ open class THUXTappableTableDelegate: NSObject, UITableViewDelegate {
     public init(_ onTap: ((IndexPath) -> Void)? = nil) {
         if let onTap = onTap {
             self.onTap = onTap
+        }
+    }
+    
+    public init(_ dataSource: MultiModelTableViewDataSource) {
+        onTap = { indexPath in
+            if let tappable = dataSource.sections?[indexPath.section].items?[indexPath.row] as? Tappable {
+                tappable.onTap()
+            }
         }
     }
     
@@ -29,6 +38,11 @@ open class THUXPageableTableViewDelegate: THUXTappableTableDelegate {
     
     public init(_ pageableModelManager: THUXPageableModelManager?, _ onTap: ((IndexPath) -> Void)? = nil) {
         super.init(onTap)
+        self.pageableModelManager = pageableModelManager
+    }
+    
+    public init(_ pageableModelManager: THUXPageableModelManager?, _ dataSource: MultiModelTableViewDataSource) {
+        super.init(dataSource)
         self.pageableModelManager = pageableModelManager
     }
 

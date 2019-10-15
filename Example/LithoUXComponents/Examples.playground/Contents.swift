@@ -58,7 +58,8 @@ class DetailTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
 }
-func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void) -> MultiModelTableViewDataSourceItem { return TappableFunctionalMultiModelItem<DetailTableViewCell>(identifier: "cell", configurer, {}) }
+
+func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void, onTap: @escaping () -> Void) -> MultiModelTableViewDataSourceItem { return TappableFunctionalMultiModelItem<DetailTableViewCell>(identifier: "cell", configurer, onTap) }
 
 //linking models to views
 let buildConfigurator: (Reign) -> (UITableViewCell) -> Void = { reign in
@@ -72,8 +73,10 @@ let buildConfigurator: (Reign) -> (UITableViewCell) -> Void = { reign in
     }
 }
 
-// setup
+//setup
 let call = ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint())
+
+//just for stubbing purposes
 call.firingFunc = { $0.responder?.dataProperty.value = json.data(using: .utf8) }
 
 let dataSignal = (call.responder?.dataSignal)!
@@ -81,12 +84,17 @@ let modelsSignal: Signal<[Reign], Never> = unwrappedModelSignal(from: dataSignal
 let refreshManager = THUXRefreshCallModelsManager<Reign>(call, modelsSignal)
 
 let vc = THUXRefreshableMultiTableViewController<Reign>(nibName: "THUXMultiModelTableViewController", bundle: Bundle(for: THUXMultiModelTableViewController<Reign>.self))
-vc.tableViewDelegate = THUXTappableTableDelegate()
-vc.refreshableModelManager = refreshManager
-vc.title = "Current Cycle"
-vc.viewModel = THUXModelListViewModel(modelsSignal: refreshManager.modelsSignal, modelToItem: buildConfigurator >>> configuratorToItem)
 
 let nc = UINavigationController(rootViewController: vc)
+let onTap: () -> Void = {}
+
+let cycleSignal: Signal<Cycle, Never> = modelSignal(from: dataSignal)
+cycleSignal.observeValues { vc.title = "\($0.ordinal ?? 0)th Cycle" }
+vc.refreshableModelManager = refreshManager
+
+let viewModel = THUXModelListViewModel(modelsSignal: refreshManager.modelsSignal, modelToItem: buildConfigurator >>> (onTap >||> configuratorToItem))
+vc.viewModel = viewModel
+vc.tableViewDelegate = THUXTappableTableDelegate(viewModel.dataSource)
 
 PlaygroundPage.current.liveView = nc
 PlaygroundPage.current.needsIndefiniteExecution = true
