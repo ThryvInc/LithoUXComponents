@@ -38,6 +38,7 @@
 		492D9E0B234E61D70025ADA4 /* Examples.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Examples.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		492D9E0C234E6C860025ADA4 /* PagingDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingDelegateTests.swift; sourceTree = "<group>"; };
 		492D9E0E234E76F80025ADA4 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		493FC21B2358F0660056E38F /* Search.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Search.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		494D138523527A6B00CAAC76 /* Pipelines.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Pipelines.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5EDEA18A48F1B7B6BA91A837 /* Pods_LithoUXComponents_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LithoUXComponents_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* LithoUXComponents_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LithoUXComponents_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +105,7 @@
 		607FACD21AFB9204008FA782 /* Example for LithoUXComponents */ = {
 			isa = PBXGroup;
 			children = (
+				493FC21B2358F0660056E38F /* Search.playground */,
 				494D138523527A6B00CAAC76 /* Pipelines.playground */,
 				492D9E0B234E61D70025ADA4 /* Examples.playground */,
 				492C9F132319AB71002F3D07 /* Login.playground */,
