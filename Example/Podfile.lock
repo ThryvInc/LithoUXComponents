@@ -5,7 +5,7 @@ PODS:
   - ISO8601DateFormatter (0.8)
   - LithoOperators (0.0.2):
     - Prelude
-  - LithoUXComponents (0.0.4):
+  - LithoUXComponents (0.0.5):
     - FunNet
     - ISO8601DateFormatter
     - MultiModelTableViewDataSource
@@ -74,7 +74,7 @@ SPEC CHECKSUMS:
   FunNet: 782eb82ce25a8a0499eef8533edbc192817a0b33
   ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
   LithoOperators: 8a4f284d8c10cb02b28af87c18494ba225345419
-  LithoUXComponents: 3b55ea0cfbcd6541d50d2ba590e5ec137504b2b0
+  LithoUXComponents: 8797b53e68a5159311b363ff09332e9b8e7dea2a
   MultiModelTableViewDataSource: 798f682408933a269de09e5c73b54cd5cb86b851
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PlaygroundVCHelpers: b368165b6bff8bfb8111ea704038878377f3b835
