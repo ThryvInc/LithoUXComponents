@@ -11,13 +11,40 @@ open class THUXMultiModelTableViewController<T>: UIViewController {
     @IBOutlet public var tableView: UITableView?
     open var tableViewDelegate: THUXTappableTableDelegate?
     open var viewModel: T?
-
+    open var refreshableModelManager: THUXRefreshableNetworkCallManager? { didSet { indicatingCall = refreshableModelManager?.call }}
+    open var indicatingCall: ReactiveNetCall? {
+        didSet {
+            indicatingCall?.responder?.responseSignal.observeValues({ _ in
+                self.tableView?.refreshControl?.endRefreshing()
+            })
+            indicatingCall?.responder?.dataSignal.observeValues({ _ in
+                self.tableView?.refreshControl?.endRefreshing()
+            })
+        }
+    }
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView?.rowHeight = UITableView.automaticDimension
         tableView?.tableFooterView = UIView()
+        
         configureTableView()
+    }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refresh()
+    }
+    
+    @objc
+    open func refresh() {
+        if let refresher = refreshableModelManager {
+            if let isRefreshing = tableView?.refreshControl?.isRefreshing, !isRefreshing {
+                tableView?.refreshControl?.beginRefreshing()
+            }
+            refresher.refresh()
+        }
     }
 
     open func configureTableView() {
@@ -25,6 +52,12 @@ open class THUXMultiModelTableViewController<T>: UIViewController {
             vm.dataSource.tableView = tableView
             tableView?.dataSource = vm.dataSource
         }
+        if let pageableModelManager = refreshableModelManager as? THUXPageableModelManager {
+            pageableModelManager.viewDidLoad()
+        }
         tableView?.delegate = tableViewDelegate
+        
+        tableView?.refreshControl = UIRefreshControl()
+        tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
 }

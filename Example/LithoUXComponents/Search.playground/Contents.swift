@@ -59,6 +59,7 @@ let parseCycle: (Data) -> Cycle? = { try? THUXJsonProvider.jsonDecoder.decode(Cy
 let houseToString: (House) -> String = { String(describing: $0) }
 let reignToHouseString: (Reign) -> String = ^\Reign.house >>> houseToString >>> capitalizeFirstLetter
 
+
 //model display functions -------------------------------------------------------------------------------------
 let buildHouseConfigurator: (Reign) -> (UITableViewCell) -> Void = { reign in return { $0.textLabel?.text = reignToHouseString(reign) }}
 
@@ -67,7 +68,11 @@ func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void) -> Mult
 let configsToDataSource = configuratorToItem >||> map >>> itemsToSection >>> arrayOfSingleObject >>> sectionsToDataSource
 
 //setup
+let vc = THUXSearchViewController<THUXFilteredModelListViewModel<Reign>, Reign>(nibName: "THUXSearchViewController", bundle: Bundle(for: THUXSearchViewController<THUXFilteredModelListViewModel<Reign>, Reign>.self))
+
 let call = ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint())
+vc.indicatingCall = call
+vc.lastScreenYForAnimation = 96
 
 //just for stubbing purposes
 call.firingFunc = { $0.responder?.dataProperty.value = json.data(using: .utf8) }
@@ -75,10 +80,6 @@ call.firingFunc = { $0.responder?.dataProperty.value = json.data(using: .utf8) }
 let dataSignal = (call.responder?.dataSignal)!
 let modelsSignal: Signal<[Reign], Never> = unwrappedModelSignal(from: dataSignal, ^\Cycle.reigns)
 let onTap: () -> Void = {}
-
-let vc = THUXSearchViewController<THUXFilteredModelListViewModel<Reign>, Reign>(nibName: "THUXSearchViewController", bundle: Bundle(for: THUXSearchViewController<THUXFilteredModelListViewModel<Reign>, Reign>.self))
-
-vc.lastScreenYForAnimation = 96
 
 let searcher = Searcher<Reign>(isIncluded: { text, reign in reignToHouseString(reign).prefix(text.count) == text })
 vc.searcher = searcher
