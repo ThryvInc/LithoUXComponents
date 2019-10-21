@@ -10,12 +10,10 @@ import MultiModelTableViewDataSource
 import Prelude
 import ReactiveSwift
 
-open class THUXModelCallViewModel<T>: NSObject {
+open class THUXModelCallViewModel<T> {
     public let modelsSignal: Signal<[T], Never>
     
     public init(modelsSignal: Signal<[T], Never>) {
         self.modelsSignal = modelsSignal
-        
-        super.init()
     }
 }

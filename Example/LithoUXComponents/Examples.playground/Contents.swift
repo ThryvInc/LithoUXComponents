@@ -83,7 +83,7 @@ let dataSignal = (call.responder?.dataSignal)!
 let modelsSignal: Signal<[Reign], Never> = unwrappedModelSignal(from: dataSignal, ^\Cycle.reigns)
 let refreshManager = THUXRefreshCallModelsManager<Reign>(call, modelsSignal)
 
-let vc = THUXRefreshableMultiTableViewController<THUXModelListViewModel<Reign>>(nibName: "THUXMultiModelTableViewController", bundle: Bundle(for: THUXMultiModelTableViewController<THUXModelListViewModel<Reign>>.self))
+let vc = THUXMultiModelTableViewController<THUXModelListViewModel<Reign>>(nibName: "THUXMultiModelTableViewController", bundle: Bundle(for: THUXMultiModelTableViewController<THUXModelListViewModel<Reign>>.self))
 
 let nc = UINavigationController(rootViewController: vc)
 let onTap: () -> Void = {}
