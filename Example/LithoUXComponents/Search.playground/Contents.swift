@@ -68,10 +68,10 @@ func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void) -> Mult
 let configsToDataSource = configuratorToItem >||> map >>> itemsToSection >>> arrayOfSingleObject >>> sectionsToDataSource
 
 //setup
-let vc = THUXSearchViewController<THUXFilteredModelListViewModel<Reign>, Reign>(nibName: "THUXSearchViewController", bundle: Bundle(for: THUXSearchViewController<THUXFilteredModelListViewModel<Reign>, Reign>.self))
+let vc = THUXSearchViewController<THUXModelListViewModel<Reign>, Reign>(nibName: "THUXSearchViewController", bundle: Bundle(for: THUXSearchViewController<THUXModelListViewModel<Reign>, Reign>.self))
 
 let call = ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint())
-vc.indicatingCall = call
+vc.refreshableModelManager = THUXRefreshableNetworkCallManager(call)
 vc.lastScreenYForAnimation = 96
 
 //just for stubbing purposes
@@ -81,14 +81,13 @@ let dataSignal = (call.responder?.dataSignal)!
 let modelsSignal: Signal<[Reign], Never> = unwrappedModelSignal(from: dataSignal, ^\Cycle.reigns)
 let onTap: () -> Void = {}
 
-let searcher = Searcher<Reign>(isIncluded: { text, reign in reignToHouseString(reign).prefix(text.count) == text })
+let searcher = THUXSearcher<Reign> { text, reign in reignToHouseString(reign).prefix(text.count) == text }
 vc.searcher = searcher
 vc.onSearch = { text in
-    searcher.searchText = text
-    call.fire()
+    searcher.updateSearch(text: text)
 }
 
-let viewModel = THUXFilteredModelListViewModel(modelsSignal: modelsSignal, filter: searcher.filter(t:), modelToItem: buildHouseConfigurator >>> configuratorToItem)
+let viewModel = THUXModelListViewModel(modelsSignal: Signal.merge(modelsSignal, searcher.filteredSignal(from: modelsSignal)), modelToItem: buildHouseConfigurator >>> configuratorToItem)
 vc.viewModel = viewModel
 vc.tableViewDelegate = THUXTappableTableDelegate(viewModel.dataSource)
 

@@ -3,7 +3,7 @@ PODS:
     - LithoOperators
     - OHHTTPStubs/Swift
   - ISO8601DateFormatter (0.8)
-  - LithoOperators (0.0.2):
+  - LithoOperators (0.0.6):
     - Prelude
   - LithoUXComponents (0.0.5):
     - FunNet
@@ -61,7 +61,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FunNet:
-    :commit: d30d7f36abc85bddd4d01037e53d0c978985692d
+    :commit: 775a4d9835a605390b0ff575379e1e875b3e63a8
     :git: https://github.com/schrockblock/funnet
   PlaygroundVCHelpers:
     :commit: 426a3ad58d8bd70066b2d06a78fba3de9fcf0740
@@ -73,7 +73,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   FunNet: 782eb82ce25a8a0499eef8533edbc192817a0b33
   ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
-  LithoOperators: 8a4f284d8c10cb02b28af87c18494ba225345419
+  LithoOperators: 132c317f7f57bef52b76f18335c825243ecbadcb
   LithoUXComponents: 8797b53e68a5159311b363ff09332e9b8e7dea2a
   MultiModelTableViewDataSource: 798f682408933a269de09e5c73b54cd5cb86b851
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881

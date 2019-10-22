@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import ReactiveSwift
+import LithoOperators
+import Prelude
 
 open class THUXSearchViewController<T, U>: THUXMultiModelTableViewController<T>, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar?
     @IBOutlet weak var searchTopConstraint: NSLayoutConstraint?
     
-    var lastScreenYForAnimation: CGFloat?
-    var onSearch: (String) -> Void = { _ in }
-    var searcher: Searcher<U>?
+    open var lastScreenYForAnimation: CGFloat?
+    open var onSearch: (String) -> Void = { _ in }
+    open var searcher: THUXSearcher<U>?
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +32,13 @@ open class THUXSearchViewController<T, U>: THUXMultiModelTableViewController<T>,
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 1.25, animations: {
-            self.searchTopConstraint?.constant = 0
-            self.tableView?.alpha = 1
-        }) { _ in
-            self.searchBar?.becomeFirstResponder()
+        if let _ = self.lastScreenYForAnimation {
+            UIView.animate(withDuration: 1.25, animations: {
+                self.searchTopConstraint?.constant = 0
+                self.tableView?.alpha = 1
+            }) { _ in
+                self.searchBar?.becomeFirstResponder()
+            }
         }
     }
     
@@ -56,18 +61,38 @@ open class THUXSearchViewController<T, U>: THUXMultiModelTableViewController<T>,
     }
 }
 
-open class Searcher<T> {
-    open var searchText: String?
+open class THUXSearcher<T> {
+    let searchTextProperty = MutableProperty<String?>(nil)
+    public let searchTextSignal: Signal<String, Never>
     open var isIncluded: (String, T) -> Bool
     
     public init(isIncluded: @escaping (String, T) -> Bool) {
         self.isIncluded = isIncluded
+        searchTextSignal = searchTextProperty.signal.skipNil().filter { $0 != "" }
     }
     
-    open func filter(t: T) -> Bool {
-        guard let text = searchText, text != "" else {
+    open func updateSearch(text: String?) {
+        searchTextProperty.value = text
+    }
+    
+    open func filter(_ t: T) -> Bool {
+        guard let text = searchTextProperty.value, text != "" else {
             return true
         }
         return isIncluded(text, t)
+    }
+    
+    open func filter(text: String, array: [T]) -> [T] {
+        return array.filter(text >|> isIncluded)
+    }
+    
+    open func filter(tuple: (String, [T])) -> [T] {
+        return tuple |> ~filter(text:array:)
+    }
+}
+
+extension THUXSearcher {
+    open func filteredSignal(from modelsSignal: Signal<[T], Never>) -> Signal<[T], Never> {
+        return Signal.combineLatest(searchTextSignal, modelsSignal).map(filter(tuple:))
     }
 }
