@@ -9,8 +9,8 @@ import UIKit
 
 open class THUXMultiModelTableViewController<T>: UIViewController {
     @IBOutlet public var tableView: UITableView?
-    open var tableViewDelegate: THUXTappableTableDelegate?
-    open var viewModel: T?
+    open var tableViewDelegate: THUXTappableTableDelegate? { didSet { configureTableView() }}
+    open var viewModel: T? { didSet { configureTableView() }}
     open var refreshableModelManager: THUXRefreshableNetworkCallManager? { didSet { indicatingCall = refreshableModelManager?.call }}
     open var indicatingCall: ReactiveNetCall? {
         didSet {
