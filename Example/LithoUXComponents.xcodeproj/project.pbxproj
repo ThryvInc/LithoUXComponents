@@ -10,6 +10,7 @@
 		492D9E08234D69A60025ADA4 /* PagingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D9E07234D69A60025ADA4 /* PagingManagerTests.swift */; };
 		492D9E0D234E6C860025ADA4 /* PagingDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D9E0C234E6C860025ADA4 /* PagingDelegateTests.swift */; };
 		492D9E0F234E76F80025ADA4 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D9E0E234E76F80025ADA4 /* LoginViewModelTests.swift */; };
+		49A103382362189E00125525 /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A103372362189E00125525 /* SearchTests.swift */; };
 		5D1D243783B870D14FE40489 /* Pods_LithoUXComponents_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EDEA18A48F1B7B6BA91A837 /* Pods_LithoUXComponents_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 		492D9E0E234E76F80025ADA4 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		493FC21B2358F0660056E38F /* Search.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Search.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		494D138523527A6B00CAAC76 /* Pipelines.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Pipelines.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		49A103372362189E00125525 /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
 		5EDEA18A48F1B7B6BA91A837 /* Pods_LithoUXComponents_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LithoUXComponents_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* LithoUXComponents_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LithoUXComponents_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				492D9E0E234E76F80025ADA4 /* LoginViewModelTests.swift */,
 				492D9E07234D69A60025ADA4 /* PagingManagerTests.swift */,
 				492D9E0C234E6C860025ADA4 /* PagingDelegateTests.swift */,
+				49A103372362189E00125525 /* SearchTests.swift */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -381,6 +384,7 @@
 			files = (
 				492D9E0F234E76F80025ADA4 /* LoginViewModelTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				49A103382362189E00125525 /* SearchTests.swift in Sources */,
 				492D9E0D234E6C860025ADA4 /* PagingDelegateTests.swift in Sources */,
 				492D9E08234D69A60025ADA4 /* PagingManagerTests.swift in Sources */,
 			);
