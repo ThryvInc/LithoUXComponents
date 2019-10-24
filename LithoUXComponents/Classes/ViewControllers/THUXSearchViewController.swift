@@ -33,7 +33,7 @@ open class THUXSearchViewController<T, U>: THUXMultiModelTableViewController<T>,
         super.viewDidAppear(animated)
         
         if let _ = self.lastScreenYForAnimation {
-            UIView.animate(withDuration: 1.25, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.searchTopConstraint?.constant = 0
                 self.tableView?.alpha = 1
             }) { _ in
