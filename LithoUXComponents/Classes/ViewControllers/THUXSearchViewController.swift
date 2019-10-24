@@ -18,6 +18,8 @@ open class THUXSearchViewController<T, U>: THUXMultiModelTableViewController<T>,
     open var onSearch: (String) -> Void = { _ in }
     open var searcher: THUXSearcher<U>?
     
+    open var shouldRefresh = true
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +32,7 @@ open class THUXSearchViewController<T, U>: THUXMultiModelTableViewController<T>,
     }
     
     open override func viewDidAppear(_ animated: Bool) {
+        shouldRefresh = (searchBar?.text == nil || searchBar?.text == "")
         super.viewDidAppear(animated)
         
         if let _ = self.lastScreenYForAnimation {
@@ -39,6 +42,16 @@ open class THUXSearchViewController<T, U>: THUXMultiModelTableViewController<T>,
             }) { _ in
                 self.searchBar?.becomeFirstResponder()
             }
+        }
+    }
+    
+    open override func refresh() {
+        if shouldRefresh {
+            super.refresh()
+            searchBar?.resignFirstResponder()
+            searchBar?.text = ""
+        } else {
+            shouldRefresh = true
         }
     }
     
@@ -63,12 +76,12 @@ open class THUXSearchViewController<T, U>: THUXMultiModelTableViewController<T>,
 
 open class THUXSearcher<T> {
     let searchTextProperty = MutableProperty<String?>(nil)
-    public let searchTextSignal: Signal<String, Never>
-    open var isIncluded: (String, T) -> Bool
+    public let searchTextSignal: Signal<String?, Never>
+    open var isIncluded: (String?, T) -> Bool
     
-    public init(isIncluded: @escaping (String, T) -> Bool) {
+    public init(isIncluded: @escaping (String?, T) -> Bool) {
         self.isIncluded = isIncluded
-        searchTextSignal = searchTextProperty.signal.skipNil().filter { $0 != "" }
+        searchTextSignal = searchTextProperty.signal
     }
     
     open func updateSearch(text: String?) {
@@ -82,11 +95,14 @@ open class THUXSearcher<T> {
         return isIncluded(text, t)
     }
     
-    open func filter(text: String, array: [T]) -> [T] {
+    open func filter(text: String?, array: [T]) -> [T] {
+        guard let text = searchTextProperty.value, text != "" else {
+            return array
+        }
         return array.filter(text >|> isIncluded)
     }
     
-    open func filter(tuple: (String, [T])) -> [T] {
+    open func filter(tuple: (String?, [T])) -> [T] {
         return tuple |> ~filter(text:array:)
     }
 }

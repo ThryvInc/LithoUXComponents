@@ -101,8 +101,9 @@ class PagingManagerTests: XCTestCase {
     }
 }
 
-class Human: Codable {
+struct Human: Codable {
     var id: Int = -1
+    var name: String?
 }
 
 let firstPageOfHumans = """

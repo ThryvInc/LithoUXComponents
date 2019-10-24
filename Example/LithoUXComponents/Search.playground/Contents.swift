@@ -81,7 +81,12 @@ let dataSignal = (call.responder?.dataSignal)!
 let modelsSignal: Signal<[Reign], Never> = unwrappedModelSignal(from: dataSignal, ^\Cycle.reigns)
 let onTap: () -> Void = {}
 
-let searcher = THUXSearcher<Reign> { text, reign in reignToHouseString(reign).prefix(text.count) == text }
+let searcher = THUXSearcher<Reign> { text, reign in
+    guard let text = text, text != "" else {
+        return true
+    }
+    return reignToHouseString(reign).prefix(text.count) == text
+}
 vc.searcher = searcher
 vc.onSearch = { text in
     searcher.updateSearch(text: text)
