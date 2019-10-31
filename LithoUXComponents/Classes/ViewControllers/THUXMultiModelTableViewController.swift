@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class THUXMultiModelTableViewController<T>: UIViewController {
+open class THUXMultiModelTableViewController<T>: THUXFunctionalViewController {
     @IBOutlet public var tableView: UITableView?
     open var tableViewDelegate: THUXTappableTableDelegate? { didSet { configureTableView() }}
     open var viewModel: T? { didSet { configureTableView() }}
