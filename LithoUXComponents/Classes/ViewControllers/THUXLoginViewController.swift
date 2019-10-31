@@ -15,6 +15,7 @@ open class THUXLoginViewController: THUXFunctionalViewController {
     @IBOutlet open weak var loginButton: UIButton?
     @IBOutlet open weak var loginHeight: NSLayoutConstraint!
     @IBOutlet open weak var signUpButton: UIButton?
+    @IBOutlet open weak var forgotPasswordButton: UIButton!
     @IBOutlet open weak var spinner: UIActivityIndicatorView?
     
     open var loginViewModel: THUXLoginProtocol?
@@ -44,4 +45,6 @@ open class THUXLoginViewController: THUXFunctionalViewController {
     }
     
     @IBAction @objc open func signUpPressed() {}
+    
+    @IBAction @objc open func forgotPasswordPressed() {}
 }

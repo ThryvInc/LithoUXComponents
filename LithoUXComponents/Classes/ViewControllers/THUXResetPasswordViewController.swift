@@ -1,0 +1,20 @@
+//
+//  THUXResetPasswordViewController.swift
+//  LithoUXComponents
+//
+//  Created by Elliot Schrock on 10/31/19.
+//
+
+import UIKit
+
+open class THUXResetPasswordViewController: THUXFunctionalViewController {
+    @IBOutlet open weak var newPasswordTextField: UITextField?
+    @IBOutlet open weak var confirmPasswordTextField: UITextField?
+    @IBOutlet open weak var submitButton: UIButton?
+    
+    public var onSubmit: ((THUXResetPasswordViewController) -> Void)?
+
+    @IBAction open func submitPressed() {
+        onSubmit?(self)
+    }
+}
