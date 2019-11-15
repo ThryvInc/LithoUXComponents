@@ -9,7 +9,6 @@ import UIKit
 
 open class THUXFunctionalViewController: UIViewController {
     public var onLoadView: ((THUXFunctionalViewController) -> Void)?
-    public var onLayoutSubviews: ((THUXFunctionalViewController) -> Void)?
     public var onViewDidLoad: ((THUXFunctionalViewController) -> Void)?
     public var onViewWillAppear: ((THUXFunctionalViewController, Bool) -> Void)?
     public var onViewDidAppear: ((THUXFunctionalViewController, Bool) -> Void)?

@@ -11,6 +11,7 @@ open class THUXResetPasswordViewController: THUXFunctionalViewController {
     @IBOutlet open weak var newPasswordTextField: UITextField?
     @IBOutlet open weak var confirmPasswordTextField: UITextField?
     @IBOutlet open weak var submitButton: UIButton?
+    @IBOutlet open weak var activityIndicatorView: UIActivityIndicatorView?
     
     public var onSubmit: ((THUXResetPasswordViewController) -> Void)?
 

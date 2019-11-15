@@ -11,8 +11,8 @@ import LithoOperators
 import Prelude
 
 open class THUXSearchViewController<T, U>: THUXMultiModelTableViewController<T>, UISearchBarDelegate {
-    @IBOutlet weak var searchBar: UISearchBar?
-    @IBOutlet weak var searchTopConstraint: NSLayoutConstraint?
+    @IBOutlet open weak var searchBar: UISearchBar?
+    @IBOutlet open weak var searchTopConstraint: NSLayoutConstraint?
     
     open var lastScreenYForAnimation: CGFloat?
     open var onSearch: (String) -> Void = { _ in }

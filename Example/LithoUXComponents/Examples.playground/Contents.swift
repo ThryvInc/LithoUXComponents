@@ -81,7 +81,6 @@ call.firingFunc = { $0.responder?.dataProperty.value = json.data(using: .utf8) }
 
 let dataSignal = (call.responder?.dataSignal)!
 let modelsSignal: Signal<[Reign], Never> = unwrappedModelSignal(from: dataSignal, ^\Cycle.reigns)
-let refreshManager = THUXRefreshCallModelsManager<Reign>(call, modelsSignal)
 
 let vc = THUXMultiModelTableViewController<THUXModelListViewModel<Reign>>(nibName: "THUXMultiModelTableViewController", bundle: Bundle(for: THUXMultiModelTableViewController<THUXModelListViewModel<Reign>>.self))
 
@@ -90,6 +89,8 @@ let onTap: () -> Void = {}
 
 let cycleSignal: Signal<Cycle, Never> = modelSignal(from: dataSignal)
 cycleSignal.observeValues { vc.title = "\($0.ordinal ?? 0)th Cycle" }
+
+let refreshManager = THUXRefreshCallModelsManager<Reign>(call, modelsSignal)
 vc.refreshableModelManager = refreshManager
 
 let viewModel = THUXModelListViewModel(modelsSignal: refreshManager.modelsSignal, modelToItem: buildConfigurator >>> (onTap >||> configuratorToItem))

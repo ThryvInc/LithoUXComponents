@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ReactiveSwift
 import FunNet
 
 public protocol Refreshable {
