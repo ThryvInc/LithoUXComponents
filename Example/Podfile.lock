@@ -61,7 +61,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FunNet:
-    :commit: 775a4d9835a605390b0ff575379e1e875b3e63a8
+    :commit: 3e133558ba2f0914e63f812abc94611a03242a75
     :git: https://github.com/schrockblock/funnet
   PlaygroundVCHelpers:
     :commit: 426a3ad58d8bd70066b2d06a78fba3de9fcf0740

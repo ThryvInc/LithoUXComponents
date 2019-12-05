@@ -8,7 +8,7 @@
 import FunNet
 import ReactiveSwift
 
-open class ReactiveNetCall: Fireable {
+open class ReactiveNetCall: NetworkCall, Fireable {
     public typealias ResponderType = ReactiveNetworkResponder
     
     public var configuration: ServerConfigurationProtocol
