@@ -15,7 +15,7 @@ class LoginViewModelTests: XCTestCase {
     func testSubmitButtonDisabledOnLoad() {
         var wasCalled = false
         
-        let viewModel = THUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
+        let viewModel = LUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
                                            loginModelToJson: { _, _ in Human() })
         
         viewModel.outputs.submitButtonEnabled.observeValues { enable in
@@ -31,7 +31,7 @@ class LoginViewModelTests: XCTestCase {
     func testSubmitButtonDisabledOnEmptyCredentials() {
         var wasCalled = false
         
-        let viewModel = THUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
+        let viewModel = LUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
                                            loginModelToJson: { _, _ in Human() })
         
         viewModel.outputs.submitButtonEnabled.observeValues { enable in
@@ -48,7 +48,7 @@ class LoginViewModelTests: XCTestCase {
     func testSubmitButtonDisabledOnHalfEmptyCredentials() {
         var wasCalled = false
         
-        let viewModel = THUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
+        let viewModel = LUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
                                            loginModelToJson: { _, _ in Human() })
         
         viewModel.outputs.submitButtonEnabled.observeValues { enable in
@@ -68,7 +68,7 @@ class LoginViewModelTests: XCTestCase {
         var wasCalled = false
         var wasNotCalledTwice = true
         
-        let viewModel = THUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
+        let viewModel = LUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
                                            loginModelToJson: { _, _ in Human() })
         
         viewModel.outputs.submitButtonEnabled.observeValues { enable in
@@ -89,7 +89,7 @@ class LoginViewModelTests: XCTestCase {
     func testSubmitButtonDisabledOnVisibleSpinner() {
         var callCount = 0
         
-        let viewModel = THUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
+        let viewModel = LUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
                                            loginModelToJson: { _, _ in Human() })
         
         viewModel.outputs.submitButtonEnabled.observeValues { enable in
@@ -110,7 +110,7 @@ class LoginViewModelTests: XCTestCase {
     func testSubmitButtonEnabledOnValidCredentials() {
         var wasCalled = false
         
-        let viewModel = THUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
+        let viewModel = LUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
                                            loginModelToJson: { _, _ in Human() })
         
         viewModel.outputs.submitButtonEnabled.observeValues { enable in
@@ -127,7 +127,7 @@ class LoginViewModelTests: XCTestCase {
     func testSubmitButtonDisabledUntilValidCredentials() {
         var callCount = 0
         
-        let viewModel = THUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
+        let viewModel = LUXLoginViewModel(credsCall: ReactiveNetCall(configuration: ServerConfiguration(host: "lithobyte.co", apiRoute: "api/v1"), Endpoint()),
                                            loginModelToJson: { _, _ in Human() })
         
         viewModel.outputs.submitButtonEnabled.observeValues { enable in
@@ -159,7 +159,7 @@ class LoginViewModelTests: XCTestCase {
         call.firingFunc = { _ in
             wasCalled = true
         }
-        let viewModel = THUXLoginViewModel(credsCall: call,
+        let viewModel = LUXLoginViewModel(credsCall: call,
                                            loginModelToJson: { _, _ in Human() })
         
         viewModel.outputs.activityIndicatorVisible.observeValues { enable in

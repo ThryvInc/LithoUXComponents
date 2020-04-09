@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		492D9E08234D69A60025ADA4 /* PagingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D9E07234D69A60025ADA4 /* PagingManagerTests.swift */; };
-		492D9E0D234E6C860025ADA4 /* PagingDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D9E0C234E6C860025ADA4 /* PagingDelegateTests.swift */; };
 		492D9E0F234E76F80025ADA4 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D9E0E234E76F80025ADA4 /* LoginViewModelTests.swift */; };
 		49A103382362189E00125525 /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A103372362189E00125525 /* SearchTests.swift */; };
 		5D1D243783B870D14FE40489 /* Pods_LithoUXComponents_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EDEA18A48F1B7B6BA91A837 /* Pods_LithoUXComponents_Tests.framework */; };
@@ -37,7 +36,6 @@
 		492D9E07234D69A60025ADA4 /* PagingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingManagerTests.swift; sourceTree = "<group>"; };
 		492D9E0A234D7FC20025ADA4 /* config.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = config.yml; path = ../.circleci/config.yml; sourceTree = "<group>"; };
 		492D9E0B234E61D70025ADA4 /* Examples.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Examples.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		492D9E0C234E6C860025ADA4 /* PagingDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingDelegateTests.swift; sourceTree = "<group>"; };
 		492D9E0E234E76F80025ADA4 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		493FC21B2358F0660056E38F /* Search.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Search.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		494D138523527A6B00CAAC76 /* Pipelines.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Pipelines.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -135,7 +133,6 @@
 			children = (
 				492D9E0E234E76F80025ADA4 /* LoginViewModelTests.swift */,
 				492D9E07234D69A60025ADA4 /* PagingManagerTests.swift */,
-				492D9E0C234E6C860025ADA4 /* PagingDelegateTests.swift */,
 				49A103372362189E00125525 /* SearchTests.swift */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
@@ -313,31 +310,25 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LithoUXComponents_Example/Pods-LithoUXComponents_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FlexDataSource/FlexDataSource.framework",
 				"${BUILT_PRODUCTS_DIR}/FunNet/FunNet.framework",
-				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatter/ISO8601DateFormatter.framework",
+				"${BUILT_PRODUCTS_DIR}/LUX/LUX.framework",
 				"${BUILT_PRODUCTS_DIR}/LithoOperators/LithoOperators.framework",
 				"${BUILT_PRODUCTS_DIR}/LithoUXComponents/LithoUXComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/MultiModelTableViewDataSource/MultiModelTableViewDataSource.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/PlaygroundVCHelpers/PlaygroundVCHelpers.framework",
 				"${BUILT_PRODUCTS_DIR}/Prelude/Prelude.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SSPullToRefresh/SSPullToRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/THUXAuth/THUXAuth.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexDataSource.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FunNet.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LUX.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LithoOperators.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LithoUXComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MultiModelTableViewDataSource.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PlaygroundVCHelpers.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prelude.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSPullToRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/THUXAuth.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -385,7 +376,6 @@
 				492D9E0F234E76F80025ADA4 /* LoginViewModelTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				49A103382362189E00125525 /* SearchTests.swift in Sources */,
-				492D9E0D234E6C860025ADA4 /* PagingDelegateTests.swift in Sources */,
 				492D9E08234D69A60025ADA4 /* PagingManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -511,7 +501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -525,7 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LithoUXComponents/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -541,7 +531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LithoUXComponents/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";

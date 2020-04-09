@@ -22,7 +22,7 @@ There's a bunch of really cool stuff in this pod, all targeted at letting you bu
   s.source           = { :git => 'https://github.com/ThryvInc/LithoUXComponents.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/elliot_schrock'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
 
   s.source_files = 'LithoUXComponents/Classes/**/*.swift'
   
@@ -34,11 +34,11 @@ There's a bunch of really cool stuff in this pod, all targeted at letting you bu
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'ReactiveSwift'
-  s.dependency 'SSPullToRefresh'
-  s.dependency 'ISO8601DateFormatter'
   #s.dependency 'SBTextInputView'
-  s.dependency 'MultiModelTableViewDataSource'
-  s.dependency 'FunNet'
-  s.dependency 'THUXAuth'
+  s.dependency 'FlexDataSource'
+  s.dependency 'FunNet/ReactiveSwift'
+  s.dependency 'LUX/Base'
+  s.dependency 'LUX/Utilities'
+  s.dependency 'LUX/Auth'
   s.dependency 'Prelude', '~> 3.0'
 end

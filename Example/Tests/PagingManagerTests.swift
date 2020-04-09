@@ -40,7 +40,7 @@ class PagingManagerTests: XCTestCase {
     func testRefresh() {
         var wasCalled = false
         
-        let pageManager = THUXPageCallModelsManager<Human>(call, firstPageValue: 1)
+        let pageManager = LUXPageCallModelsManager<Human>(call, firstPageValue: 1)
         pageManager.modelsSignal.observeValues { (humans) in
             XCTAssertEqual(humans.count, 1)
             XCTAssertEqual(humans.first?.id, 1)
@@ -54,7 +54,7 @@ class PagingManagerTests: XCTestCase {
 
     func testNextPage() {
         var callCount = 0
-        let pageManager = THUXPageCallModelsManager<Human>(call, firstPageValue: 1)
+        let pageManager = LUXPageCallModelsManager<Human>(call, firstPageValue: 1)
         pageManager.modelsSignal.observeValues { (humans) in
             callCount += 1
             if callCount == 2 {
@@ -79,7 +79,7 @@ class PagingManagerTests: XCTestCase {
 
     func testRefreshAfterNextPage() {
         var callCount = 0
-        let pageManager = THUXPageCallModelsManager<Human>(call, firstPageValue: 1)
+        let pageManager = LUXPageCallModelsManager<Human>(call, firstPageValue: 1)
         pageManager.modelsSignal.observeValues { (humans) in
             callCount += 1
             if callCount == 2 {

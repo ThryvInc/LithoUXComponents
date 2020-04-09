@@ -16,7 +16,7 @@ class SearchTests: XCTestCase {
         var count = 0
         
         let humansProperty = MutableProperty<[Human]?>(nil)
-        let searcher = THUXSearcher<Human> { searchString, human in
+        let searcher = LUXSearcher<Human> { searchString, human in
             guard let search = searchString else {
                 return true
             }

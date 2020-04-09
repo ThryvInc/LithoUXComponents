@@ -48,18 +48,7 @@ let capitalizeFirstLetter: (String) -> String = { $0.prefix(1).uppercased() + $0
 let houseToString: (House) -> String = { String(describing: $0) }
 let reignToHouseString: (Reign) -> String = get(\Reign.house) >>> houseToString >>> capitalizeFirstLetter
 
-//table view cell subclass
-class DetailTableViewCell: UITableViewCell {
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-}
-
-func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void, onTap: @escaping () -> Void) -> MultiModelTableViewDataSourceItem { return TappableFunctionalMultiModelItem<DetailTableViewCell>(identifier: "cell", configurer, onTap) }
+func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void, onTap: @escaping () -> Void) -> MultiModelTableViewDataSourceItem { return TappableFunctionalMultiModelItem<LUXDetailTableViewCell>(identifier: "cell", configurer, onTap) }
 
 //linking models to views
 let buildConfigurator: (Reign) -> (UITableViewCell) -> Void = { reign in
@@ -82,7 +71,7 @@ call.firingFunc = { $0.responder?.dataProperty.value = json.data(using: .utf8) }
 let dataSignal = (call.responder?.dataSignal)!
 let modelsSignal: Signal<[Reign], Never> = unwrappedModelSignal(from: dataSignal, ^\Cycle.reigns)
 
-let vc = THUXMultiModelTableViewController<THUXModelListViewModel<Reign>>(nibName: "THUXMultiModelTableViewController", bundle: Bundle(for: THUXMultiModelTableViewController<THUXModelListViewModel<Reign>>.self))
+let vc = LUXMultiModelTableViewController<LUXModelListViewModel<Reign>>(nibName: "LUXMultiModelTableViewController", bundle: Bundle(for: LUXMultiModelTableViewController<LUXModelListViewModel<Reign>>.self))
 
 let nc = UINavigationController(rootViewController: vc)
 let onTap: () -> Void = {}
@@ -90,12 +79,12 @@ let onTap: () -> Void = {}
 let cycleSignal: Signal<Cycle, Never> = modelSignal(from: dataSignal)
 cycleSignal.observeValues { vc.title = "\($0.ordinal ?? 0)th Cycle" }
 
-let refreshManager = THUXRefreshCallModelsManager<Reign>(call, modelsSignal)
+let refreshManager = LUXRefreshCallModelsManager<Reign>(call, modelsSignal)
 vc.refreshableModelManager = refreshManager
 
-let viewModel = THUXModelListViewModel(modelsSignal: refreshManager.modelsSignal, modelToItem: buildConfigurator >>> (onTap >||> configuratorToItem))
+let viewModel = LUXModelListViewModel(modelsSignal: refreshManager.modelsSignal, modelToItem: buildConfigurator >>> (onTap >||> configuratorToItem))
 vc.viewModel = viewModel
-vc.tableViewDelegate = THUXTappableTableDelegate(viewModel.dataSource)
+vc.tableViewDelegate = LUXTappableTableDelegate(viewModel.dataSource)
 
 PlaygroundPage.current.liveView = nc
 PlaygroundPage.current.needsIndefiniteExecution = true

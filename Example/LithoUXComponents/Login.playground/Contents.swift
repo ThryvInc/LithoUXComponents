@@ -9,12 +9,12 @@ func optionalCast<T, U>(object: U) -> T? {
     return object as? T
 }
 
-let styleVC: (THUXLoginViewController) -> Void = { loginVC in
+let styleVC: (LUXLoginViewController) -> Void = { loginVC in
     print(loginVC.view)
     loginVC.forgotPasswordButton?.isHidden = true
 }
 
-let vc = THUXLoginViewController(nibName: "THUXLoginViewController", bundle: Bundle(for: THUXLoginViewController.self))
+let vc = LUXLoginViewController.makeFromXIB()
 vc.onViewDidLoad = optionalCast >>> (styleVC >||> ifExecute)
 
 PlaygroundPage.current.liveView = vc
