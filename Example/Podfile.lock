@@ -8,7 +8,7 @@ PODS:
     - ReactiveSwift
   - LithoOperators (0.0.11):
     - Prelude
-  - LithoUXComponents (0.0.6):
+  - LithoUXComponents (0.0.7):
     - FlexDataSource
     - FunNet/ReactiveSwift
     - LUX/Auth
@@ -16,13 +16,13 @@ PODS:
     - LUX/Utilities
     - Prelude (~> 3.0)
     - ReactiveSwift
-  - LUX/Auth (0.1.1)
-  - LUX/Base (0.1.1):
+  - LUX/Auth (0.1.2)
+  - LUX/Base (0.1.2):
     - FlexDataSource
     - FunNet/Core
     - LithoOperators
     - Prelude (~> 3.0)
-  - LUX/Utilities (0.1.1):
+  - LUX/Utilities (0.1.2):
     - Prelude (~> 3.0)
   - PlaygroundVCHelpers (0.0.2)
   - Prelude (3.0.0)
@@ -68,7 +68,7 @@ CHECKOUT OPTIONS:
     :commit: 9842f69967e5f16b4782b18c6ff3057ae23fff6d
     :git: https://github.com/ThryvInc/LithoOperators
   LUX:
-    :commit: 6aae023722f25c3f1220258d718b27987a8ee67c
+    :commit: fb38ba0ed5c0503316712badf1ca201058fb4e79
     :git: https://github.com/ThryvInc/LUX
   PlaygroundVCHelpers:
     :commit: 1b1f5ed572a1965e1d52bbc1b21f3796a6f144e2
@@ -78,8 +78,8 @@ SPEC CHECKSUMS:
   FlexDataSource: 77c91077c71a09624a3999054bf1d2ad7745ca0b
   FunNet: 08de074e98b1bc00a6340f1316e4deb07056462c
   LithoOperators: 4c48d2951a4999d9c3ac194d44933782710c5201
-  LithoUXComponents: e2a002a687da5b87aaf05e2b580ccf43eb0cbd1b
-  LUX: caefe0c5fe1e6a7c53d344196ba0d0ba3e5eae60
+  LithoUXComponents: 7019116d34af82793dd4a3751dbe0cec09fa23e3
+  LUX: cd762fd77f7fb40361c30315d1e36aad2d1f51eb
   PlaygroundVCHelpers: c7cc8994d2851ebd1590217101b4c6888d1c9cc8
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   ReactiveSwift: 07ddf579f4eb3ee3bd656214f0461aaf2c0fd639
