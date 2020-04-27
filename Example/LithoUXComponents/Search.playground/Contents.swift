@@ -2,6 +2,7 @@ import UIKit
 import PlaygroundSupport
 @testable import LithoUXComponents
 @testable import FunNet
+import LUX
 import Prelude
 import ReactiveSwift
 import FlexDataSource
@@ -81,20 +82,17 @@ let dataSignal = (call.responder?.dataSignal)!
 let modelsSignal: Signal<[Reign], Never> = unwrappedModelSignal(from: dataSignal, ^\Cycle.reigns)
 let onTap: () -> Void = {}
 
-let searcher = LUXSearcher<Reign> { text, reign in
-    guard let text = text, text != "" else {
-        return true
-    }
-    return reignToHouseString(reign).prefix(text.count) == text
+let searcher = LUXSearcher<Reign>(reignToHouseString, .allMatchNilAndEmpty, .prefix)
+vc.searchViewModel?.onIncrementalSearch = { text in
+    searcher.updateIncrementalSearch(text: text)
 }
-vc.searcher = searcher
-vc.onSearch = { text in
-    searcher.updateSearch(text: text)
-}
+
+let refreshManager = LUXRefreshCallModelsManager<Reign>(call, modelsSignal)
+vc.refreshableModelManager = refreshManager
 
 let viewModel = LUXModelListViewModel(modelsSignal: Signal.merge(modelsSignal, searcher.filteredSignal(from: modelsSignal)), modelToItem: buildHouseConfigurator >>> configuratorToItem)
 vc.viewModel = viewModel
-vc.tableViewDelegate = LUXTappableTableDelegate(viewModel.dataSource)
+vc.tableViewDelegate = LUXFunctionalTableDelegate(onSelect: viewModel.dataSource.tappableOnSelect)
 
 PlaygroundPage.current.liveView = vc
 PlaygroundPage.current.needsIndefiniteExecution = true

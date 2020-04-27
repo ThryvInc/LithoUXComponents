@@ -62,13 +62,13 @@ CHECKOUT OPTIONS:
     :commit: 327c48129a20906c978b9420473cd35779fccf7e
     :git: https://github.com/ThryvInc/flex-data-source
   FunNet:
-    :commit: 09f75e96fd03931cee016a26a2dcf21ff96358ae
+    :commit: 421395a64a5e70853dde6c1c9f59ea762a4ad1cf
     :git: https://github.com/schrockblock/funnet
   LithoOperators:
-    :commit: 8398ac3d35a30c5c29583764342b53a72fd239c8
+    :commit: 9842f69967e5f16b4782b18c6ff3057ae23fff6d
     :git: https://github.com/ThryvInc/LithoOperators
   LUX:
-    :commit: d6fe8c3b12fe5154dd26772a73b434e0460c4891
+    :commit: 6aae023722f25c3f1220258d718b27987a8ee67c
     :git: https://github.com/ThryvInc/LUX
   PlaygroundVCHelpers:
     :commit: 1b1f5ed572a1965e1d52bbc1b21f3796a6f144e2

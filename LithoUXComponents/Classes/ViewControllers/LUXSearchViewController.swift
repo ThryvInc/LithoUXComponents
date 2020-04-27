@@ -9,15 +9,16 @@ import LUX
 import ReactiveSwift
 import LithoOperators
 import Prelude
+import FunNet
+import LUX
 
 open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T>, UISearchBarDelegate {
     @IBOutlet open weak var searchBar: UISearchBar?
     @IBOutlet open weak var searchTopConstraint: NSLayoutConstraint?
     
     open var lastScreenYForAnimation: CGFloat?
-    open var onSearch: (String) -> Void = { _ in }
-    open var searcher: LUXSearcher<U>?
     
+    open var searchViewModel: LUXSearchViewModel<U>? = LUXSearchViewModel<U>()
     open var shouldRefresh = true
     
     open override func viewDidLoad() {
@@ -28,11 +29,22 @@ open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T>, UISearc
             tableView?.alpha = 0
         }
         
-        searchBar?.delegate = self
+        searchBar?.delegate = searchViewModel
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        shouldRefresh = (searchViewModel?.savedSearch == nil || searchViewModel?.savedSearch == "")
+        if let searchText = searchViewModel?.savedSearch {
+            searchBar?.text = searchText
+            searchBar?.resignFirstResponder()
+        }
     }
     
     open override func viewDidAppear(_ animated: Bool) {
-        shouldRefresh = (searchBar?.text == nil || searchBar?.text == "")
         super.viewDidAppear(animated)
         
         if let _ = self.lastScreenYForAnimation {
@@ -45,6 +57,15 @@ open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T>, UISearc
         }
     }
     
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchViewModel?.savedSearch = searchBar?.text
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     open override func refresh() {
         if shouldRefresh {
             super.refresh()
@@ -54,34 +75,55 @@ open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T>, UISearc
             shouldRefresh = true
         }
     }
-    
-    //MARK: - search
-    
-    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        onSearch(searchText)
-    }
-    
-    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
 }
 
 open class LUXSearcher<T> {
     let searchTextProperty = MutableProperty<String?>(nil)
     public let searchTextSignal: Signal<String?, Never>
+    let incrementalSearchTextProperty = MutableProperty<String?>(nil)
+    public let incrementalSearchTextSignal: Signal<String?, Never>
     open var isIncluded: (String?, T) -> Bool
     
     public init(isIncluded: @escaping (String?, T) -> Bool) {
         self.isIncluded = isIncluded
         searchTextSignal = searchTextProperty.signal
+        incrementalSearchTextSignal = incrementalSearchTextProperty.signal
+    }
+    
+    public init(_ modelToString: @escaping (T) -> String?, _ nilAndEmptyStrategy: NilAndEmptyMatchStrategy, _ matchStrategy: MatchStrategy, _ isCaseSensitive: Bool = false) {
+        searchTextSignal = searchTextProperty.signal
+        incrementalSearchTextSignal = incrementalSearchTextProperty.signal
+        
+        let (nilMatcher, emptyMatcher) = nilAndEmptyMatchers(for: nilAndEmptyStrategy)
+        let match = matcher(for: matchStrategy)
+        
+        if isCaseSensitive {
+            isIncluded = { search, t in defaultIsIncluded(search, t, modelToString, nilMatcher, emptyMatcher, match)}
+        } else {
+            isIncluded = { search, t in
+                defaultIsIncluded(search?.lowercased(), t, modelToString >>> lowercased(string:), nilMatcher, emptyMatcher, match)
+            }
+        }
+    }
+    
+    public init(_ modelToString: @escaping (T) -> String, _ nilAndEmptyStrategy: NilAndEmptyMatchStrategy, _ matchStrategy: MatchStrategy, _ isCaseSensitive: Bool = false) {
+        searchTextSignal = searchTextProperty.signal
+        incrementalSearchTextSignal = incrementalSearchTextProperty.signal
+        
+        let (nilMatcher, emptyMatcher) = nilAndEmptyMatchers(for: nilAndEmptyStrategy)
+        let match = matcher(for: matchStrategy)
+        
+        if isCaseSensitive {
+            isIncluded = { search, t in defaultIsIncluded(search, t, modelToString, nilMatcher, emptyMatcher, match)}
+        } else {
+            isIncluded = { search, t in
+                defaultIsIncluded(search?.lowercased(), t, modelToString >>> lowercased(string:), nilMatcher, emptyMatcher, match)
+            }
+        }
+    }
+    
+    open func updateIncrementalSearch(text: String?) {
+        incrementalSearchTextProperty.value = text
     }
     
     open func updateSearch(text: String?) {
@@ -96,10 +138,10 @@ open class LUXSearcher<T> {
     }
     
     open func filter(text: String?, array: [T]) -> [T] {
-        guard let text = searchTextProperty.value, text != "" else {
+        guard let t = text, t != "" else {
             return array
         }
-        return array.filter(text >|> isIncluded)
+        return array.filter(t >|> isIncluded)
     }
     
     open func filter(tuple: (String?, [T])) -> [T] {
@@ -110,5 +152,17 @@ open class LUXSearcher<T> {
 extension LUXSearcher {
     open func filteredSignal(from modelsSignal: Signal<[T], Never>) -> Signal<[T], Never> {
         return Signal.combineLatest(searchTextSignal, modelsSignal).map(filter(tuple:))
+    }
+}
+
+public func defaultOnSearch<T>(_ searcher: LUXSearcher<T>, _ call: ReactiveNetCall, _ refresher: Refreshable? = nil, paramName: String = "query") -> (String) -> Void {
+    return { text in
+        searcher.updateSearch(text: text)
+        call.endpoint.getParams.updateValue(text, forKey: paramName)
+        if let refresher = refresher {
+            refresher.refresh()
+        } else {
+            call.fire()
+        }
     }
 }
