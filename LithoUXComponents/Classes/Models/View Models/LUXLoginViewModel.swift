@@ -43,7 +43,7 @@ open class LUXLoginViewModel: LUXLoginProtocol, LUXLoginInputs, LUXLoginOutputs 
     let activityIndicatorVisibleProperty = MutableProperty<Bool>(false)
     
     public let advanceAuthed: Signal<(), Never>
-    let advanceAuthedProperty = MutableProperty(())
+    public let advanceAuthedProperty = MutableProperty(())
     
     public let successfulCredEntry: Signal<(String, String), Never>
     public let submittedFormDataInvalid: Signal<(String, String), Never>
