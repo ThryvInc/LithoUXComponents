@@ -40,13 +40,12 @@ class PagingManagerTests: XCTestCase {
     func testRefresh() {
         var wasCalled = false
         
-        let pageManager = LUXPageCallModelsManager<Human>(call, firstPageValue: 1)
+        let pageManager = LUXPageCallModelsManager<Human>(firstPageValue: 1, call)
         pageManager.modelsSignal.observeValues { (humans) in
             XCTAssertEqual(humans.count, 1)
             XCTAssertEqual(humans.first?.id, 1)
             wasCalled = true
         }
-        pageManager.viewDidLoad()
         pageManager.refresh()
         
         XCTAssert(wasCalled)
@@ -54,7 +53,7 @@ class PagingManagerTests: XCTestCase {
 
     func testNextPage() {
         var callCount = 0
-        let pageManager = LUXPageCallModelsManager<Human>(call, firstPageValue: 1)
+        let pageManager = LUXPageCallModelsManager<Human>(firstPageValue: 1, call)
         pageManager.modelsSignal.observeValues { (humans) in
             callCount += 1
             if callCount == 2 {
@@ -69,7 +68,6 @@ class PagingManagerTests: XCTestCase {
                 XCTAssertEqual(humans[2].id, 3)
             }
         }
-        pageManager.viewDidLoad()
         pageManager.refresh()
         pageManager.nextPage()
         pageManager.nextPage()
@@ -79,7 +77,7 @@ class PagingManagerTests: XCTestCase {
 
     func testRefreshAfterNextPage() {
         var callCount = 0
-        let pageManager = LUXPageCallModelsManager<Human>(call, firstPageValue: 1)
+        let pageManager = LUXPageCallModelsManager<Human>(firstPageValue: 1, call)
         pageManager.modelsSignal.observeValues { (humans) in
             callCount += 1
             if callCount == 2 {
@@ -92,7 +90,6 @@ class PagingManagerTests: XCTestCase {
                 XCTAssertEqual(humans.first?.id, 1)
             }
         }
-        pageManager.viewDidLoad()
         pageManager.refresh()
         pageManager.nextPage()
         pageManager.refresh()

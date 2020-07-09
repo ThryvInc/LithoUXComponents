@@ -3,8 +3,10 @@ import PlaygroundSupport
 @testable import LithoUXComponents
 @testable import FunNet
 import Prelude
+import fuikit
+import Slippers
 import ReactiveSwift
-import MultiModelTableViewDataSource
+import FlexDataSource
 import LithoOperators
 
 //Models ------------------------------------------------------------------------------------------------------
@@ -66,7 +68,7 @@ class DetailTableViewCell: UITableViewCell {
 
 //model manipulation functions -------------------------------------------------------------------------------------
 let capitalizeFirstLetter: (String) -> String = { $0.prefix(1).uppercased() + $0.lowercased().dropFirst() }
-let parseCycle: (Data) -> Cycle? = { try? LUXJsonProvider.jsonDecoder.decode(Cycle.self, from: $0) }
+let parseCycle: (Data) -> Cycle? = { JsonProvider.decode(Cycle.self, from: $0) }
 let houseToString: (House) -> String = { String(describing: $0) }
 let reignToHouseString: (Reign) -> String = ^\Reign.house >>> houseToString >>> capitalizeFirstLetter
 
@@ -97,7 +99,7 @@ let buildReignConfigs: ([Reign]) -> [(UITableViewCell) -> Void] = buildReignConf
 
 
 //go from configuring functions to a table view data source ---------------------------------------------------
-func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void) -> MultiModelTableViewDataSourceItem { return FunctionalMultiModelTableViewDataSourceItem<DetailTableViewCell>(identifier: "cell", configurer) }
+func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void) -> FlexDataSourceItem { return FunctionalFlexDataSourceItem<DetailTableViewCell>(identifier: "cell", configurer) }
 let configsToDataSource = configuratorToItem >||> map >>> itemsToSection >>> arrayOfSingleObject >>> sectionsToDataSource
 
 
@@ -124,7 +126,7 @@ class CycleViewController : UITableViewController {
             }
         }
     }
-    var dataSource: MultiModelTableViewDataSource? {
+    var dataSource: FlexDataSource? {
         didSet {
             setupDataSource()
         }

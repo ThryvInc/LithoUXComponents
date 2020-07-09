@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LithoUXComponents'
-  s.version          = '0.0.7'
+  s.version          = '0.1.0'
   s.summary          = 'LithoUXComponents contains everything you need to create a simple app.'
 
   s.description      = <<-DESC
@@ -27,12 +27,7 @@ There's a bunch of really cool stuff in this pod, all targeted at letting you bu
   s.source_files = 'LithoUXComponents/Classes/**/*.swift'
   
   s.resources = 'LithoUXComponents/**/*.xib'
-  # s.resource_bundles = {
-  #   'LithoUXComponents' => ['LithoUXComponents/**/*.xib']
-  # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'ReactiveSwift'
   #s.dependency 'SBTextInputView'
   s.dependency 'FlexDataSource'
@@ -40,5 +35,7 @@ There's a bunch of really cool stuff in this pod, all targeted at letting you bu
   s.dependency 'LUX/Base'
   s.dependency 'LUX/Utilities'
   s.dependency 'LUX/Auth'
+  s.dependency 'Slippers'
+  s.dependency 'fuikit'
   s.dependency 'Prelude', '~> 3.0'
 end

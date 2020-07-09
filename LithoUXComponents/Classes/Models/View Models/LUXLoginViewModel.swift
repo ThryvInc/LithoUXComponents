@@ -9,6 +9,7 @@ import LUX
 import ReactiveSwift
 import FunNet
 import Prelude
+import Slippers
 
 public protocol LUXLoginInputs {
     func usernameChanged(username: String?)
@@ -82,7 +83,7 @@ open class LUXLoginViewModel: LUXLoginProtocol, LUXLoginInputs, LUXLoginOutputs 
         
         submitButtonPressedProperty.signal.observeValues { _ in
             let model = loginModelToJson(self.usernameChangedProperty.value, self.passwordChangedProperty.value)
-            self.credentialLoginCall?.endpoint.postData = try? LUXJsonProvider.jsonEncoder.encode(model)
+            self.credentialLoginCall?.endpoint.postData = JsonProvider.encode(model)
             self.credentialLoginCall?.fire()
             self.activityIndicatorVisibleProperty.value = true
         }

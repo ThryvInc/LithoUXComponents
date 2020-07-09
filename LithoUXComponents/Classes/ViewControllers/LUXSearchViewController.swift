@@ -11,8 +11,9 @@ import LithoOperators
 import Prelude
 import FunNet
 import LUX
+import Slippers
 
-open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T>, UISearchBarDelegate {
+open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T> {
     @IBOutlet open weak var searchBar: UISearchBar?
     @IBOutlet open weak var searchTopConstraint: NSLayoutConstraint?
     

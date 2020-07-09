@@ -9,16 +9,6 @@ import UIKit
 import ReactiveSwift
 import LUX
 
-public protocol LUXSplashTask {
-    func execute(completion: @escaping () -> Void)
-}
-
-public protocol LUXSplashInputs {
-    func viewDidLoad()
-    func viewWillAppear()
-    func viewDidAppear()
-}
-
 public protocol LUXSplashOutputs {
     var performAnimationsSignal: Signal<(), Never> { get }
     var advanceUnauthedSignal: Signal<(), Never> { get }
