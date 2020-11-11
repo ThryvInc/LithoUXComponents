@@ -9,11 +9,12 @@ import fuikit
 import ReactiveSwift
 import FunNet
 import LUX
+import Slippers
 
 open class LUXFlexTableViewController<T>: FUITableViewViewController {
     open var tableViewDelegate: FUITableViewDelegate? { didSet { configureTableView() }}
     open var viewModel: T? { didSet { configureTableView() }}
-    open var refreshableModelManager: LUXRefreshableNetworkCallManager? { didSet { indicatingCall = refreshableModelManager?.call as? ReactiveNetCall }}
+    open var refreshableModelManager: (Refreshable & CallManager)? { didSet { indicatingCall = refreshableModelManager?.call as? ReactiveNetCall }}
     open var indicatingCall: ReactiveNetCall? {
         didSet {
             indicatingCall?.responder?.responseSignal.observeValues({ _ in
