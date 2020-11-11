@@ -7,8 +7,9 @@
 
 import FunNet
 import Slippers
+import LUX
 
-open class LUXCallPager: Pager {
+open class LUXCallPager: Pager, CallManager {
     open var call: Fireable?
     
     public init(pageKeyName: String = "page", countKeyName: String = "count", defaultCount: Int = 20, firstPageValue: Int = 0, _ call: Fireable?) {
