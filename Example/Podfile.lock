@@ -20,8 +20,8 @@ PODS:
     - Prelude (~> 3.0)
     - ReactiveSwift
     - Slippers
-  - LUX/Auth (0.2.7)
-  - LUX/Base (0.2.7):
+  - LUX/Auth (0.2.8)
+  - LUX/Base (0.2.8):
     - FlexDataSource
     - fuikit
     - FunNet/Core
@@ -29,15 +29,15 @@ PODS:
     - Prelude (~> 3.0)
     - SDWebImage
     - Slippers
-  - LUX/Utilities (0.2.7):
+  - LUX/Utilities (0.2.8):
     - Prelude (~> 3.0)
   - PlaygroundVCHelpers (0.0.2)
   - Prelude (3.0.0)
   - ReactiveSwift (6.5.0)
-  - SDWebImage (5.9.4):
-    - SDWebImage/Core (= 5.9.4)
-  - SDWebImage/Core (5.9.4)
-  - Slippers (0.0.2)
+  - SDWebImage (5.9.5):
+    - SDWebImage/Core (= 5.9.5)
+  - SDWebImage/Core (5.9.5)
+  - Slippers (0.1.1)
 
 DEPENDENCIES:
   - FlexDataSource (from `https://github.com/ThryvInc/flex-data-source`)
@@ -89,13 +89,13 @@ CHECKOUT OPTIONS:
     :commit: b2ad9e7bf37efebe935c661f6dbb7c1b0a16acd6
     :git: https://github.com/ThryvInc/LithoOperators
   LUX:
-    :commit: c9c590916f1db6c88bd48e51903c7be3a826ec37
+    :commit: 7fe4a0bd0d82ba86aabccf67b0d2075441622877
     :git: https://github.com/ThryvInc/LUX
   PlaygroundVCHelpers:
     :commit: 1b1f5ed572a1965e1d52bbc1b21f3796a6f144e2
     :git: https://github.com/ThryvInc/playground-vc-helpers
   Slippers:
-    :commit: 0c964c67592c5c0ffc11cb3de2fe080d3c0ee5bf
+    :commit: c73ac0ab4d39bf981dda7caa23d959a5f22f2bb9
     :git: https://github.com/ThryvInc/slippers
 
 SPEC CHECKSUMS:
@@ -104,12 +104,12 @@ SPEC CHECKSUMS:
   FunNet: c7da8924cc8ec1f4b7126b2ad1f8c3f35b8a9e7a
   LithoOperators: ce63ed2535e2fa279d521eb76ac3d23743a3fdc6
   LithoUXComponents: 39115eeeb15a3a06311c8629340a488411d6a7aa
-  LUX: 1488f9287873756fe45877639ca77119d98cd2ee
+  LUX: 926b342a3cc05b8850feb12c712b34251f641e17
   PlaygroundVCHelpers: c7cc8994d2851ebd1590217101b4c6888d1c9cc8
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   ReactiveSwift: 8d159904084e908856cde90b2e28823f3c7e485f
-  SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
-  Slippers: c4f8bf3e0ffcd2bacf7f5ccbf00bc8fa4a4b3635
+  SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
+  Slippers: 3814c93fd93305f918a984e724d5db4d9569a660
 
 PODFILE CHECKSUM: 6344985eaecc0d83deb9ef4449f916dac8edf53f
 
