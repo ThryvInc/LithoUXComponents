@@ -89,7 +89,7 @@ CHECKOUT OPTIONS:
     :commit: b2ad9e7bf37efebe935c661f6dbb7c1b0a16acd6
     :git: https://github.com/ThryvInc/LithoOperators
   LUX:
-    :commit: 80450bff498afc772883b3aeafcf3190e5f215a9
+    :commit: efb8a04549cd670dcad065c09cef88dce47aea0b
     :git: https://github.com/ThryvInc/LUX
   PlaygroundVCHelpers:
     :commit: 1b1f5ed572a1965e1d52bbc1b21f3796a6f144e2
