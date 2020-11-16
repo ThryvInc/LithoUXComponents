@@ -11,19 +11,18 @@ import Prelude
 import ReactiveSwift
 
 public protocol LUXDataSourceProvider {
-    var dataSource: FlexDataSource { get }
+    var flexDataSource: FlexDataSource { get }
 }
 
 open class LUXModelListViewModel<T>: LUXModelTableViewModel<T>, LUXDataSourceProvider {
-    public let dataSource: FlexDataSource
+    public let flexDataSource = FlexDataSource()
     
     public override init(modelsSignal: Signal<[T], Never>, modelToItem: @escaping (T) -> FlexDataSourceItem) {
-        dataSource = FlexDataSource()
         super.init(modelsSignal: modelsSignal, modelToItem: modelToItem)
         
-        self.sectionsSignal.observeValues {
-            self.dataSource.sections = $0
-            self.dataSource.tableView?.reloadData()
+        self.sectionsSignal.observeValues { [weak self] in
+            self?.flexDataSource.sections = $0
+            self?.flexDataSource.tableView?.reloadData()
         }
     }
 }

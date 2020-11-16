@@ -20,8 +20,8 @@ PODS:
     - Prelude (~> 3.0)
     - ReactiveSwift
     - Slippers
-  - LUX/Auth (0.2.8)
-  - LUX/Base (0.2.8):
+  - LUX/Auth (0.2.9)
+  - LUX/Base (0.2.9):
     - FlexDataSource
     - fuikit
     - FunNet/Core
@@ -29,7 +29,7 @@ PODS:
     - Prelude (~> 3.0)
     - SDWebImage
     - Slippers
-  - LUX/Utilities (0.2.8):
+  - LUX/Utilities (0.2.9):
     - Prelude (~> 3.0)
   - PlaygroundVCHelpers (0.0.2)
   - Prelude (3.0.0)
@@ -89,7 +89,7 @@ CHECKOUT OPTIONS:
     :commit: b2ad9e7bf37efebe935c661f6dbb7c1b0a16acd6
     :git: https://github.com/ThryvInc/LithoOperators
   LUX:
-    :commit: 7fe4a0bd0d82ba86aabccf67b0d2075441622877
+    :commit: 80450bff498afc772883b3aeafcf3190e5f215a9
     :git: https://github.com/ThryvInc/LUX
   PlaygroundVCHelpers:
     :commit: 1b1f5ed572a1965e1d52bbc1b21f3796a6f144e2
@@ -104,7 +104,7 @@ SPEC CHECKSUMS:
   FunNet: c7da8924cc8ec1f4b7126b2ad1f8c3f35b8a9e7a
   LithoOperators: ce63ed2535e2fa279d521eb76ac3d23743a3fdc6
   LithoUXComponents: 39115eeeb15a3a06311c8629340a488411d6a7aa
-  LUX: 926b342a3cc05b8850feb12c712b34251f641e17
+  LUX: 1a7e515bd61f635f976f08243692b2b92bfc0450
   PlaygroundVCHelpers: c7cc8994d2851ebd1590217101b4c6888d1c9cc8
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   ReactiveSwift: 8d159904084e908856cde90b2e28823f3c7e485f
