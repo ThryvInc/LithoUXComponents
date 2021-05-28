@@ -10,6 +10,7 @@ import ReactiveSwift
 import FunNet
 import LUX
 import Slippers
+import LithoUtils
 
 open class LUXFlexTableViewController<T>: FUITableViewViewController {
     open var tableViewDelegate: FUITableViewDelegate? { didSet { configureTableView() }}
@@ -51,7 +52,7 @@ open class LUXFlexTableViewController<T>: FUITableViewViewController {
     }
 
     open func configureTableView() {
-        if let vm = viewModel as? LUXDataSourceProvider {
+        if var vm = viewModel as? LUXDataSourceProvider {
             vm.flexDataSource.tableView = tableView
             tableView?.dataSource = vm.flexDataSource
         }

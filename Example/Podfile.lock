@@ -1,42 +1,54 @@
 PODS:
-  - FlexDataSource (0.1.6):
+  - FlexDataSource (0.1.7):
     - fuikit
-  - fuikit (0.0.7)
-  - FunNet/Core (0.0.1):
+  - fuikit (0.1.5):
+    - fuikit/Core (= 0.1.5)
+    - fuikit/CoreBluetooth (= 0.1.5)
+    - fuikit/CoreLocation (= 0.1.5)
+  - fuikit/Core (0.1.5)
+  - fuikit/CoreBluetooth (0.1.5)
+  - fuikit/CoreLocation (0.1.5)
+  - FunNet/Core (0.1.1):
     - LithoOperators
-  - FunNet/ReactiveSwift (0.0.1):
+  - FunNet/ReactiveSwift (0.1.1):
     - FunNet/Core
     - LithoOperators
     - ReactiveSwift
-  - LithoOperators (0.1.1):
+  - LithoOperators (0.1.4):
     - Prelude
+  - LithoUtils/Core (0.1.0):
+    - fuikit
+    - LithoOperators
   - LithoUXComponents (0.1.1):
     - FlexDataSource
     - fuikit
     - FunNet/ReactiveSwift
+    - LithoUtils/Core
     - LUX/Auth
     - LUX/Base
-    - LUX/Utilities
     - Prelude (~> 3.0)
     - ReactiveSwift
     - Slippers
-  - LUX/Auth (0.2.13)
-  - LUX/Base (0.2.13):
+  - LUX/Auth (0.2.20):
+    - LithoUtils/Core
+  - LUX/Base (0.2.20):
     - FlexDataSource
-    - fuikit
+    - fuikit/Core
     - FunNet/Core
     - LithoOperators
+    - LithoUtils/Core
     - Prelude (~> 3.0)
     - SDWebImage
     - Slippers
-  - LUX/Utilities (0.2.13):
+  - LUX/Utilities (0.2.20):
+    - LithoUtils/Core
     - Prelude (~> 3.0)
   - PlaygroundVCHelpers (0.0.2)
   - Prelude (3.0.0)
-  - ReactiveSwift (6.5.0)
-  - SDWebImage (5.10.2):
-    - SDWebImage/Core (= 5.10.2)
-  - SDWebImage/Core (5.10.2)
+  - ReactiveSwift (6.6.0)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
   - Slippers (0.1.1)
 
 DEPENDENCIES:
@@ -44,10 +56,11 @@ DEPENDENCIES:
   - fuikit (from `https://github.com/ThryvInc/fuikit`)
   - FunNet/ReactiveSwift (from `https://github.com/schrockblock/funnet`)
   - LithoOperators (from `https://github.com/ThryvInc/LithoOperators`)
+  - LithoUtils/Core (from `https://github.com/ThryvInc/litho-utils`)
   - LithoUXComponents (from `../`)
-  - LUX/Auth (from `https://github.com/ThryvInc/LUX`)
-  - LUX/Base (from `https://github.com/ThryvInc/LUX`)
-  - LUX/Utilities (from `https://github.com/ThryvInc/LUX`)
+  - LUX/Auth (from `https://github.com/ThryvInc/LUX`, branch `fixup/cjc8/flex-data-source`)
+  - LUX/Base (from `https://github.com/ThryvInc/LUX`, branch `fixup/cjc8/flex-data-source`)
+  - LUX/Utilities (from `https://github.com/ThryvInc/LUX`, branch `fixup/cjc8/flex-data-source`)
   - PlaygroundVCHelpers (from `https://github.com/ThryvInc/playground-vc-helpers`)
   - Slippers (from `https://github.com/ThryvInc/slippers`)
 
@@ -66,9 +79,12 @@ EXTERNAL SOURCES:
     :git: https://github.com/schrockblock/funnet
   LithoOperators:
     :git: https://github.com/ThryvInc/LithoOperators
+  LithoUtils:
+    :git: https://github.com/ThryvInc/litho-utils
   LithoUXComponents:
     :path: "../"
   LUX:
+    :branch: fixup/cjc8/flex-data-source
     :git: https://github.com/ThryvInc/LUX
   PlaygroundVCHelpers:
     :git: https://github.com/ThryvInc/playground-vc-helpers
@@ -77,19 +93,22 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FlexDataSource:
-    :commit: ff640567fcbcf7f2db09b5264614dc4bc5811a5f
+    :commit: b40d1817e04341ee79698657702c8a7aa8e1de34
     :git: https://github.com/ThryvInc/flex-data-source
   fuikit:
-    :commit: 19d514bd7f9278645973d1811cd867ebe8e8c696
+    :commit: fdc92715a7401a323be9ac3f4960c6a890e47f24
     :git: https://github.com/ThryvInc/fuikit
   FunNet:
-    :commit: e49900be06b6be2c88536ff71b37ef3cb4db1afe
+    :commit: 9ca5a81f8b96a71b2cd671fca642a152823c3704
     :git: https://github.com/schrockblock/funnet
   LithoOperators:
-    :commit: 1b7301183184a4a26cbdc4f83cc53fdbbbff1d63
+    :commit: a39bdd37f06f50e8284d94dbcd13caf116883cde
     :git: https://github.com/ThryvInc/LithoOperators
+  LithoUtils:
+    :commit: ab690d6a0e1ca0db425d53ae90462246e8d1342e
+    :git: https://github.com/ThryvInc/litho-utils
   LUX:
-    :commit: 91cccea43ec557b8451fc24f2a3ad7032bb5fda1
+    :commit: 7578e5c005929619da5c37c22497cff3f161d279
     :git: https://github.com/ThryvInc/LUX
   PlaygroundVCHelpers:
     :commit: 1b1f5ed572a1965e1d52bbc1b21f3796a6f144e2
@@ -99,18 +118,19 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ThryvInc/slippers
 
 SPEC CHECKSUMS:
-  FlexDataSource: 411e77d3a933d71ae3094e3d4d6ccedd3419f29e
-  fuikit: 9e4c918280be6b292e4564564dd11495e5f91861
-  FunNet: e01c3f3e4258f64657bdb2476236e064db2cd9b9
-  LithoOperators: ca90994e1aa8e66eda3dcffe89095869ef5b4b66
-  LithoUXComponents: 39115eeeb15a3a06311c8629340a488411d6a7aa
-  LUX: 4868e24f75013aef7476477c83b9833d96b52b6a
+  FlexDataSource: 3b1ce4602902bd7f70821a9e88d3753fd424ae4e
+  fuikit: 976080e1c04037e01d14541135a104cb208d8c0d
+  FunNet: e66d2df77a5663556970a1914c5911ecde2842ef
+  LithoOperators: 8fc0c6a49e34a8d1ca01b777844f58e36c062d9f
+  LithoUtils: 3d89146680c1a7449334069cc75a092c32dde585
+  LithoUXComponents: a0bb7e373fd5a7f436ad3f3174630f04197e895e
+  LUX: 98b3495fc34d7fdb4ec47b4ad5a9d69e5838343d
   PlaygroundVCHelpers: c7cc8994d2851ebd1590217101b4c6888d1c9cc8
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
-  ReactiveSwift: 8d159904084e908856cde90b2e28823f3c7e485f
-  SDWebImage: b969dcfc02c40a5da71eac0b03b8f1a0c794a86f
+  ReactiveSwift: be9407e2aaf8a11e53a5229255693cffd9a63ccf
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   Slippers: 3814c93fd93305f918a984e724d5db4d9569a660
 
-PODFILE CHECKSUM: 6344985eaecc0d83deb9ef4449f916dac8edf53f
+PODFILE CHECKSUM: 03b23454bc92cba3acef5730fb632540b3101507
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

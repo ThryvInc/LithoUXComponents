@@ -10,12 +10,14 @@ import FlexDataSource
 import Prelude
 import ReactiveSwift
 
+public typealias LUXTableDataSource = FlexDataSource & UITableViewDataSource
+
 public protocol LUXDataSourceProvider {
-    var flexDataSource: FlexDataSource { get }
+    var flexDataSource: LUXTableDataSource { get set }
 }
 
 open class LUXModelListViewModel<T>: LUXModelTableViewModel<T>, LUXDataSourceProvider {
-    public let flexDataSource = FlexDataSource()
+    public var flexDataSource: LUXTableDataSource = FlexSimpleDataSource()
     
     public override init(modelsSignal: Signal<[T], Never>, modelToItem: @escaping (T) -> FlexDataSourceItem) {
         super.init(modelsSignal: modelsSignal, modelToItem: modelToItem)

@@ -3,14 +3,15 @@ use_frameworks!
 target 'LithoUXComponents_Example' do
   pod 'LithoUXComponents', :path => '../'
   pod 'PlaygroundVCHelpers', git: 'https://github.com/ThryvInc/playground-vc-helpers'
-  pod 'LUX/Auth', git: 'https://github.com/ThryvInc/LUX'
-  pod 'LUX/Base', git: 'https://github.com/ThryvInc/LUX'
-  pod 'LUX/Utilities', git: 'https://github.com/ThryvInc/LUX'
+  pod 'LUX/Auth', git: 'https://github.com/ThryvInc/LUX', branch: 'fixup/cjc8/flex-data-source'
+  pod 'LUX/Base', git: 'https://github.com/ThryvInc/LUX', branch: 'fixup/cjc8/flex-data-source'
+  pod 'LUX/Utilities', git: 'https://github.com/ThryvInc/LUX', branch: 'fixup/cjc8/flex-data-source'
   pod 'fuikit', git: 'https://github.com/ThryvInc/fuikit'
   pod 'Slippers', git: 'https://github.com/ThryvInc/slippers'
   pod 'FunNet/ReactiveSwift', git: 'https://github.com/schrockblock/funnet'
   pod 'LithoOperators', git: 'https://github.com/ThryvInc/LithoOperators'
   pod 'FlexDataSource', git: 'https://github.com/ThryvInc/flex-data-source'
+  pod 'LithoUtils/Core', git: 'https://github.com/ThryvInc/litho-utils'
 
   target 'LithoUXComponents_Tests' do
     inherit! :search_paths

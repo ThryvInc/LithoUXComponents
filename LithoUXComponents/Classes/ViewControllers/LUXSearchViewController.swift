@@ -64,10 +64,6 @@ open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T> {
         searchViewModel?.savedSearch = searchBar?.text
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
     open override func refresh() {
         if shouldRefresh {
             super.refresh()
