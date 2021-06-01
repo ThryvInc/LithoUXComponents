@@ -1,5 +1,5 @@
 PODS:
-  - FlexDataSource (0.1.7):
+  - FlexDataSource (0.2.0):
     - fuikit
   - fuikit (0.1.5):
     - fuikit/Core (= 0.1.5)
@@ -58,9 +58,9 @@ DEPENDENCIES:
   - LithoOperators (from `https://github.com/ThryvInc/LithoOperators`)
   - LithoUtils/Core (from `https://github.com/ThryvInc/litho-utils`)
   - LithoUXComponents (from `../`)
-  - LUX/Auth (from `https://github.com/ThryvInc/LUX`, branch `fixup/cjc8/flex-data-source`)
-  - LUX/Base (from `https://github.com/ThryvInc/LUX`, branch `fixup/cjc8/flex-data-source`)
-  - LUX/Utilities (from `https://github.com/ThryvInc/LUX`, branch `fixup/cjc8/flex-data-source`)
+  - LUX/Auth (from `https://github.com/ThryvInc/LUX`)
+  - LUX/Base (from `https://github.com/ThryvInc/LUX`)
+  - LUX/Utilities (from `https://github.com/ThryvInc/LUX`)
   - PlaygroundVCHelpers (from `https://github.com/ThryvInc/playground-vc-helpers`)
   - Slippers (from `https://github.com/ThryvInc/slippers`)
 
@@ -84,7 +84,6 @@ EXTERNAL SOURCES:
   LithoUXComponents:
     :path: "../"
   LUX:
-    :branch: fixup/cjc8/flex-data-source
     :git: https://github.com/ThryvInc/LUX
   PlaygroundVCHelpers:
     :git: https://github.com/ThryvInc/playground-vc-helpers
@@ -93,7 +92,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FlexDataSource:
-    :commit: b40d1817e04341ee79698657702c8a7aa8e1de34
+    :commit: d6d7d542d2f1ff514d8cd570301a3ef85e28d9dd
     :git: https://github.com/ThryvInc/flex-data-source
   fuikit:
     :commit: fdc92715a7401a323be9ac3f4960c6a890e47f24
@@ -108,7 +107,7 @@ CHECKOUT OPTIONS:
     :commit: ab690d6a0e1ca0db425d53ae90462246e8d1342e
     :git: https://github.com/ThryvInc/litho-utils
   LUX:
-    :commit: 7578e5c005929619da5c37c22497cff3f161d279
+    :commit: 96befc9b7e98fd2ae1a6a82ddb12af03cf8ff7fa
     :git: https://github.com/ThryvInc/LUX
   PlaygroundVCHelpers:
     :commit: 1b1f5ed572a1965e1d52bbc1b21f3796a6f144e2
@@ -118,7 +117,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ThryvInc/slippers
 
 SPEC CHECKSUMS:
-  FlexDataSource: 3b1ce4602902bd7f70821a9e88d3753fd424ae4e
+  FlexDataSource: 7ac68abd6ca54a3c043cad19104644ab25c31842
   fuikit: 976080e1c04037e01d14541135a104cb208d8c0d
   FunNet: e66d2df77a5663556970a1914c5911ecde2842ef
   LithoOperators: 8fc0c6a49e34a8d1ca01b777844f58e36c062d9f
@@ -131,6 +130,6 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   Slippers: 3814c93fd93305f918a984e724d5db4d9569a660
 
-PODFILE CHECKSUM: 03b23454bc92cba3acef5730fb632540b3101507
+PODFILE CHECKSUM: 151d3796de7ef1ef07bde617494d6f2a825db034
 
 COCOAPODS: 1.10.1

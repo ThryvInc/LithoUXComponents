@@ -75,7 +75,7 @@ extension LUXRefreshableTableViewModel {
 }
 
 open class LUXSectionsTableViewModel: LUXRefreshableTableViewModel, LUXDataSourceProvider {
-    public var flexDataSource: LUXTableDataSource = FlexSimpleDataSource() { didSet { dataSource = flexDataSource }}
+    public var flexDataSource = FlexDataSource() { didSet { dataSource = flexDataSource }}
     public var sectionsPublisher: Signal<[FlexDataSourceSection], Never>
     
     public init(_ refresher: Refreshable,
