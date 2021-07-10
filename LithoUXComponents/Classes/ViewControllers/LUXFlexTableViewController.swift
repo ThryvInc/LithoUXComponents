@@ -5,15 +5,17 @@
 //  Created by Elliot Schrock on 10/12/19.
 //
 
-import LUX
+import fuikit
 import ReactiveSwift
 import FunNet
+import LUX
+import Slippers
+import LithoUtils
 
-open class LUXFlexTableViewController<T>: LUXFunctionalViewController {
-    @IBOutlet public var tableView: UITableView?
-    open var tableViewDelegate: LUXFunctionalTableDelegate? { didSet { configureTableView() }}
+open class LUXFlexTableViewController<T>: FUITableViewViewController {
+    open var tableViewDelegate: FUITableViewDelegate? { didSet { configureTableView() }}
     open var viewModel: T? { didSet { configureTableView() }}
-    open var refreshableModelManager: LUXRefreshableNetworkCallManager? { didSet { indicatingCall = refreshableModelManager?.call }}
+    open var refreshableModelManager: (Refreshable & CallManager)? { didSet { indicatingCall = refreshableModelManager?.call as? ReactiveNetCall }}
     open var indicatingCall: ReactiveNetCall? {
         didSet {
             indicatingCall?.responder?.responseSignal.observeValues({ _ in
@@ -50,12 +52,9 @@ open class LUXFlexTableViewController<T>: LUXFunctionalViewController {
     }
 
     open func configureTableView() {
-        if let vm = viewModel as? LUXDataSourceProvider {
-            vm.dataSource.tableView = tableView
-            tableView?.dataSource = vm.dataSource
-        }
-        if let pageableModelManager = refreshableModelManager as? LUXPageableModelManager {
-            pageableModelManager.viewDidLoad()
+        if var vm = viewModel as? LUXDataSourceProvider {
+            vm.flexDataSource.tableView = tableView
+            tableView?.dataSource = vm.flexDataSource
         }
         tableView?.delegate = tableViewDelegate
         

@@ -5,9 +5,9 @@
 //  Created by Elliot Schrock on 2/10/18.
 //
 
-import LUX
+import fuikit
 
-open class LUXLoginViewController: LUXFunctionalViewController {
+open class LUXLoginViewController: FUIViewController {
     @IBOutlet open weak var logoImageView: UIImageView?
     @IBOutlet open weak var logoHeight: NSLayoutConstraint!
     @IBOutlet open weak var usernameTextField: UITextField?

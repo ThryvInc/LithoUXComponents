@@ -11,8 +11,9 @@ import LithoOperators
 import Prelude
 import FunNet
 import LUX
+import Slippers
 
-open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T>, UISearchBarDelegate {
+open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T> {
     @IBOutlet open weak var searchBar: UISearchBar?
     @IBOutlet open weak var searchTopConstraint: NSLayoutConstraint?
     
@@ -29,7 +30,7 @@ open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T>, UISearc
             tableView?.alpha = 0
         }
         
-        searchBar?.delegate = searchViewModel
+        searchBar?.delegate = searchViewModel?.searchBarDelegate
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -63,10 +64,6 @@ open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T>, UISearc
         searchViewModel?.savedSearch = searchBar?.text
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
     open override func refresh() {
         if shouldRefresh {
             super.refresh()
@@ -78,7 +75,7 @@ open class LUXSearchViewController<T, U>: LUXFlexTableViewController<T>, UISearc
     }
 }
 
-open class LUXSearcher<T> {
+open class LUXSearcher<T>: LUXSearchable {
     let searchTextProperty = MutableProperty<String?>(nil)
     public let searchTextSignal: Signal<String?, Never>
     let incrementalSearchTextProperty = MutableProperty<String?>(nil)
@@ -153,17 +150,5 @@ open class LUXSearcher<T> {
 extension LUXSearcher {
     open func filteredSignal(from modelsSignal: Signal<[T], Never>) -> Signal<[T], Never> {
         return Signal.combineLatest(searchTextSignal, modelsSignal).map(filter(tuple:))
-    }
-}
-
-public func defaultOnSearch<T>(_ searcher: LUXSearcher<T>, _ call: ReactiveNetCall, _ refresher: Refreshable? = nil, paramName: String = "query") -> (String) -> Void {
-    return { text in
-        searcher.updateSearch(text: text)
-        call.endpoint.getParams.updateValue(text, forKey: paramName)
-        if let refresher = refresher {
-            refresher.refresh()
-        } else {
-            call.fire()
-        }
     }
 }

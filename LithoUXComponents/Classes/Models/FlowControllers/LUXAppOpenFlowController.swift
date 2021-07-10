@@ -6,6 +6,7 @@
 //
 
 import LUX
+import LithoUtils
 
 open class LUXAppOpenFlowController: LUXFlowCoordinator {
     open var splashViewModel: LUXSplashViewModel?
@@ -13,5 +14,6 @@ open class LUXAppOpenFlowController: LUXFlowCoordinator {
     open var registrationViewModel: LUXRegistrationViewModel?
     
     public init() {}
+    public var initialViewController: UIViewController? { initialVC() }
     open func initialVC() -> UIViewController? { return nil }
 }

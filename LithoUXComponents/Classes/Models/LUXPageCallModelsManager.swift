@@ -7,16 +7,39 @@
 
 import ReactiveSwift
 import FunNet
+import Prelude
+import LithoOperators
 
-open class LUXPageCallModelsManager<T>: LUXPageableModelManager where T: Decodable {
+open class LUXPageCallModelsManager<T>: LUXCallPager where T: Decodable {
     public let modelsSignal: Signal<[T], Never>
     private let modelsProperty = MutableProperty<[T]>([T]())
-    public init(_ call: ReactiveNetCall, _ modelArraySignal: Signal<[T], Never>, firstPageValue: Int = 1) {
+    
+    public init(pageKeyName: String = "page",
+                countKeyName: String = "count",
+                defaultCount: Int = 20,
+                firstPageValue: Int = 1,
+                _ call: ReactiveNetCall,
+                _ modelArraySignal: Signal<[T], Never>) {
         modelsSignal = modelsProperty.signal
-        super.init(call, firstPageValue: firstPageValue)
+        super.init(pageKeyName: pageKeyName, countKeyName: countKeyName, defaultCount: defaultCount, firstPageValue: firstPageValue, call)
         
-        modelArraySignal.observeValues({ [weak self] (array) in
-            if self?.pageProperty.value == firstPageValue {
+        modelArraySignal |> subscribeForPaging
+    }
+    
+    public init(pageKeyName: String = "page",
+                countKeyName: String = "count",
+                defaultCount: Int = 20,
+                firstPageValue: Int = 1,
+                _ call: ReactiveNetCall) {
+        modelsSignal = modelsProperty.signal
+        super.init(pageKeyName: pageKeyName, countKeyName: countKeyName, defaultCount: defaultCount, firstPageValue: firstPageValue, call)
+        
+        optModelSignal(from: call.responder?.dataSignal) ?> subscribeForPaging
+    }
+    
+    open func subscribeForPaging(_ modelsSignal: Signal<[T], Never>) {
+        modelsSignal.observeValues({ [weak self] (array) in
+            if self?.page == self?.firstPageValue {
                 self?.modelsProperty.value = array
             } else {
                 if var allModels = self?.modelsProperty.value {
@@ -25,23 +48,5 @@ open class LUXPageCallModelsManager<T>: LUXPageableModelManager where T: Decodab
                 }
             }
         })
-    }
-    
-    public override init(_ call: ReactiveNetCall, firstPageValue: Int = 1) {
-        modelsSignal = modelsProperty.signal
-        super.init(call, firstPageValue: firstPageValue)
-        
-        if let modelsSignal: Signal<[T], Never> = optModelSignal(from: call.responder?.dataSignal) {
-            modelsSignal.observeValues({ [weak self] (array) in
-                if self?.pageProperty.value == firstPageValue {
-                    self?.modelsProperty.value = array
-                } else {
-                    if var allModels = self?.modelsProperty.value {
-                        allModels.append(contentsOf: array)
-                        self?.modelsProperty.value = allModels
-                    }
-                }
-            })
-        }
     }
 }

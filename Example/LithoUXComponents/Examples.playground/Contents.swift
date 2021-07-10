@@ -4,7 +4,10 @@ import PlaygroundSupport
 @testable import FunNet
 import ReactiveSwift
 import Prelude
-import MultiModelTableViewDataSource
+import LUX
+import FlexDataSource
+import Slippers
+import fuikit
 import LithoOperators
 
 //Models
@@ -48,7 +51,7 @@ let capitalizeFirstLetter: (String) -> String = { $0.prefix(1).uppercased() + $0
 let houseToString: (House) -> String = { String(describing: $0) }
 let reignToHouseString: (Reign) -> String = get(\Reign.house) >>> houseToString >>> capitalizeFirstLetter
 
-func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void, onTap: @escaping () -> Void) -> MultiModelTableViewDataSourceItem { return TappableFunctionalMultiModelItem<LUXDetailTableViewCell>(identifier: "cell", configurer, onTap) }
+func configuratorToItem(configurer: @escaping (UITableViewCell) -> Void, onTap: @escaping () -> Void) -> FlexDataSourceItem { return TappableFunctionalFlexItem<LUXDetailTableViewCell>(identifier: "cell", configurer, onTap) }
 
 //linking models to views
 let buildConfigurator: (Reign) -> (UITableViewCell) -> Void = { reign in
@@ -71,7 +74,7 @@ call.firingFunc = { $0.responder?.dataProperty.value = json.data(using: .utf8) }
 let dataSignal = (call.responder?.dataSignal)!
 let modelsSignal: Signal<[Reign], Never> = unwrappedModelSignal(from: dataSignal, ^\Cycle.reigns)
 
-let vc = LUXMultiModelTableViewController<LUXModelListViewModel<Reign>>(nibName: "LUXMultiModelTableViewController", bundle: Bundle(for: LUXMultiModelTableViewController<LUXModelListViewModel<Reign>>.self))
+let vc = LUXFlexTableViewController<LUXModelListViewModel<Reign>>(nibName: "LUXFlexTableViewController", bundle: Bundle(for: LUXFlexTableViewController<LUXModelListViewModel<Reign>>.self))
 
 let nc = UINavigationController(rootViewController: vc)
 let onTap: () -> Void = {}
@@ -79,12 +82,12 @@ let onTap: () -> Void = {}
 let cycleSignal: Signal<Cycle, Never> = modelSignal(from: dataSignal)
 cycleSignal.observeValues { vc.title = "\($0.ordinal ?? 0)th Cycle" }
 
-let refreshManager = LUXRefreshCallModelsManager<Reign>(call, modelsSignal)
+let refreshManager = LUXRefreshableNetworkCallManager(call)
 vc.refreshableModelManager = refreshManager
 
-let viewModel = LUXModelListViewModel(modelsSignal: refreshManager.modelsSignal, modelToItem: buildConfigurator >>> (onTap >||> configuratorToItem))
+let viewModel = LUXModelListViewModel(modelsSignal: modelsSignal, modelToItem: buildConfigurator >>> (onTap >||> configuratorToItem))
 vc.viewModel = viewModel
-vc.tableViewDelegate = LUXTappableTableDelegate(viewModel.dataSource)
+vc.tableViewDelegate = FUITableViewDelegate(onSelect: viewModel.dataSource.tappableOnSelect(_:_:))
 
 PlaygroundPage.current.liveView = nc
 PlaygroundPage.current.needsIndefiniteExecution = true
